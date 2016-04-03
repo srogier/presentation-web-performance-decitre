@@ -48,12 +48,426 @@
 
 
                 <section>
+                    <section>
+                        <h1>L'importance de la performance web</h1>
+
+                        <aside class="notes">
+                            Pourquoi la web performance est importante, pourquoi cherche-t-on à réduire les temps de réponse de son site  ?
+                            Influence sur le nombre de page vues, sur le taux de rebond sur la conversion
+                            Critère SEO
+                            Développement du traffic mobile.
+                            Augmentation du nombre de ressources
+                            Temps serveur réduit ===> baisse de l’infra.
+                            Et au final expérience utilisateur améliorée
+                            Examples connus :
+                            Ralentissement bing
+                            exemple site ecommerce
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h1>La webperf vue par un dev backend</h1>
+
+                        <aside class="notes">
+                            But du sujet c'est aussi de parler de web perf pour les personnes qui ont moins l'habitude d'en faire.
+                            Habitude du dev back qui va travailler sur les index SQL, optimiser à l'aide de xhprof/blackfire.
+                            Mais au final quand la page est généré en moins de 500ms et que l'utilisateur met 6s à l'afficher correctement, le marge de progression n'est pas côté serveur.
+                        </aside>
+                    </section>
+                </section>
+
+                <section>
+                    <h1>Decitre.fr</h1>
+                    <section>
+                        <h2>L'équipe</h2>
+
+                        <ul>
+                            <li>1 CTO</li>
+                            <li>3 développeurs</li>
+                            <li>une dizaine de personnes hors technique</li>
+                        </ul>
+
+                        <aside class="notes">
+                            Je suis développeur chez Decitre Interactive, au sein d’une équipe technique composée de 4 personnes (3 dev et un directeur technique). Nous éditons decitre.fr, une librairie en ligne, qui est basé sur magento et tourne en php 5.5. Nous gérons également des versions en marque blanche de notre site comme Uculture, une magento B2B appelé decitrepro.fr, et proposons un outil en mode SAAS de recherche bibliographique basé sur du Symfony.
+                            reste de l’équipe (emerch, seo, etc.) qui intervient sur le site
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h2>Le site</h2>
+
+                        <ul>
+                            <li>4,2 millions de pages vues par mois</li>
+                            <li>1.2 million de produits</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h2>Le site</h2>
+
+                        <ul>
+                            <li>PHP 5 (7 ?) + Apache + Varnish</li>
+                            <li>3 fronts web</li>
+                        </ul>
+
+                        <aside class="notes">
+                            PHP 5 + Apache + varnish  3 front
+                            Pas de déploiement continu ===> pas de techno hipster sur la génération de css et js au déploiement ===> on commite ce qu’on déploie (git apply FTW, “incident en prod”-free depuis 2 ans)
+                        </aside>
+                    </section>
+                </section>
+                
+                <section>
+                    <section>
+                        <h1>Les outils pour mesurer</h1>
+
+                        <aside class="notes">
+                            Quels outils utiliser en tant que développeur ? <br />
+                            Outil de dev fournis avec les navigateurs
+
+                        </aside>
+                        
+                    </section>
+
+                    <section>
+                        <h1>Anatomie d'un hit HTTP</h1>
+
+                        <img src="images/timing_hit_http.png" class="fragment">
+
+                        <aside class="notes">
+                            Echanges via le protocole HTTP <br />
+                            Exemple avec une page de decitre.fr et l'onglet Netword de chrome <br />
+                            1. Temps d'attente avant envoi<br />
+                            2. Requete DNS (latence). 1 domaine == 1 requete<br />
+                            3. Etablissement de la connexion (hanshake) (latence)<br />
+                            3.bis au besoin négo TLS<br />
+                            4. connexion ouverte : envoi de la requete (traite, prépare contenu, envoie): TTFB<br />
+                            5. ContentDownload<br />
+
+                            API Timing Navigation<br />
+
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h1>Traitement d'une page HTML</h1>
+
+
+                        //TODO schema
+
+                    </section>
+
+                    <section>
+                        <h1>Les contenus bloquants</h1>
+
+
+
+                    </section>
+
+
+                    <section>
+                        <h1>L'importance du réseau</h1>
+
+
+
+                    </section>
+
+                    <section>
+                        <h1>Outils utilisés chez Decitre</h1>
+
+                        <h2>WebPagetest</h2>
+
+                        TODO capture image
+
+                        <aside class="notes">
+                            Une url, un lieu où seront effectués les tests <br />
+                            Type de réseau (BP et latence) <br />
+                            Et c'est parti<br />
+                            On obtient deux superbes waterfall : 1 premier et un autre dans le foulée pour visualiser le cache
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h1>Outils utilisés chez Decitre</h1>
+
+                        <h2>GTmetrix</h2>
+
+                        TODO capture image
+
+                        <aside class="notes">
+
+                            Automatisation de webpagetest plusieurs fois par jour <br/>
+                            Rapport hebdomadaire <br/>
+                            Existe en version gratuite<br/>
+                            Avoir régulièrement des tests qui tourne et suivre l'évolution de performances
+                        </aside>
+                    </section>
+
+
+                    <section>
+                        <h1>Outils utilisés chez Decitre</h1>
+
+                        <h2>New Relic</h2>
+
+                        TODO capture image
+
+                        <aside class="notes">
+                            Côté serveur, même si métriques côté navigateur <br/>
+                            Outil le plus utilisé en interne <br/>
+                            Erreurs, temps de réponse, requêtes et pages lente<br/>
+                            Evolution du trafic<br/>
+                            Historisé. <br/>
+                            bon outil pour suivre autant l'évolution en mode macro sur quelques mois que pour suivre ce qui se passe pendant un laps de temps très court.
+                        </aside>
+                    </section>
+
+
+                    <section>
+                        <h1>Outils utilisés chez Decitre</h1>
+
+                        <h2>Google Analytics</h2>
+
+                        TODO capture image
+
+                        <aside class="notes">
+                            Temps de réponse<br/>
+                            Croisement avec info utilisateur (navigateurs, support utilisés)<br/>
+                            Meilleure connaissance de l'utilisation de notre site<br/>
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h1>Outils utilisés chez Decitre</h1>
+
+                        <h2>httparchive.org</h2>
+
+                        TODO capture image
+
+                        <aside class="notes">
+                            Fourni des stats sur des sites internet<br/>
+                            Script interne qui extrait ces stats mensuelles<br/>
+                            Evolution nombre de ressources, poids, speedIndex<br/>
+                            Comparatif par rapport  à la concurrence<br />
+                            Permet de visualiser d'anciens webpagetest en se combinant avec archive.org (outil qui stocke à intervalles régulier des pages webs)<br/>
+                            pratique pour accéder à un ancien webpagetest ou préparer une conférence <br/>
+
+                        </aside>
+                    </section>
+
+                </section>
+
+                <section>
+                    <h1>Réduire le nombre de ressources</h1>
+
+                    <section>
+                        <h2>Gérer le cache</h2>
+
+                        <ul>
+                            <li>Cache HTTP</li>
+                            <li>Durée de cache</li>
+                        </ul>
+
+                        <aside class="notes">
+
+                        </aside>
+                    </section>
+
+
+                    <section>
+                        <h2>Garder les connexions ouvertes</h2>
+
+                        // TODO montrer capture requete en parallèle
+
+                        KeepAlive
+
+                        <aside class="notes">
+
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h2>Concaténer les assets</h2>
+
+                        <aside class="notes">
+
+                        </aside>
+                    </section>
+
+
+                    <section>
+                        <h2>Paralléliser les chargements des images</h2>
+
+                        <aside class="notes">
+
+                        </aside>
+                    </section>
+
+
+                    <section>
+                        <h2>Revoir l'utilisation des images</h2>
+
+                        <aside class="notes">
+
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h2>Supprimer les images inutiles</h2>
+
+                        // code bouton moche + images
+
+                        <aside class="notes">
+
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h2>Utiliser des sprites</h2>
+
+
+
+                        <aside class="notes">
+
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h2>Utiliser les Data URI</h2>
+
+                        <aside class="notes">
+
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h2>Exemple concret avec le footer</h2>
+
+
+
+                        <aside class="notes">
+
+                        </aside>
+                    </section>
+                </section>
+
+                <section>
+                    <h1>Alléger les ressources</h1>
+
+                    <section>
+                        <h2>Compresser le contenu</h2>
+
+
+
+                        <aside class="notes">
+
+                        </aside>
+                    </section>
+
+
+                    <section>
+                        <h2>Minifier les assets</h2>
+
+
+
+                        <aside class="notes">
+
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h2>Utiliser des domaines cookieless</h2>
+
+
+
+                        <aside class="notes">
+
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h2>Optimiser les images</h2>
+
+
+
+                        <aside class="notes">
+
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h2>Nettoyer le code mort</h2>
+
+
+
+                        <aside class="notes">
+
+                        </aside>
+                    </section>
+
+                </section>
+
+                <section>
+                    <h1>Réduire les contenus bloquants</h1>
+
+                    <section>
+                        <h2>Descendre le javascript</h2>
+
+
+
+                        <aside class="notes">
+
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h2>Extraire la css critique</h2>
+
+
+
+                        <aside class="notes">
+
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h2>Lazy-loader les images</h2>
+
+
+
+                        <aside class="notes">
+
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h2>Auditer les scripts externes</h2>
+
+
+
+                        <aside class="notes">
+
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h2>Charger différement les iframe</h2>
+
+
+
+                        <aside class="notes">
+
+                        </aside>
+                    </section>
+                </section>
+
+                <section>
                     <h1>Merci pour votre attention</h1>
 
                     <h3>Des questions ?</h3>
                 </section>
 
             </div>
+
 
 
 
