@@ -699,24 +699,25 @@
 
 
                         <aside class="notes">
-                            Tracking, retargeting, widget de réseaux sociaux, à un moment donné, on finit par charger sur son site des scripts qu'on n'héberge pas ou sur lesquels nous n'avons pas la main. Et bien sûr un jour arrive où ces scripts tombent, et s'ils sont chargés en synchrone, il faut attendre le timeout navigateur pour que le reste de la page finisse par se charger.
+                            Tracking, retargeting, widget de réseaux sociaux, à un moment donné, finit par charger sur site scripts qu'on n'héberge pas ou sur lesquels pas la main. <br />
+                            Et bien sûr un jour arrive ces scripts tombent, et s'ils sont chargés synchrone, attendre  timeout navigateur pour reste page finisse par  charger. <br />
+                            Pour évitez ça, auditez, regardez ce qui est chargé, quand et de quelle manière.  <br />
 
-                            Pour évitez ça, auditez, regardez ce qui est chargé, quand et de quelle manière.
+                            Voici graphique représentant dépendances de notre FP effectué sur webperftools.  <br />
 
-                            Voici un graphique représentant les dépendances de notre fiche produit effectué sur webperftools.
+                            Voit très bien que moitié des dépendances, partie  droite, à cause d'un seul script. <br />
+                            Faire attention à ce que ce script, ne fasse pas tomber notre page. pouvez tester cela dans webpagetest indiquant dans configuration SPOF domaines  vous souhaitez ne pas pouvoir charger. <br />
 
-                            On voit très bien que la moitié des dépendances, la partie sur la droite, n'est là qu'à cause d'un seul script. Il faut donc faire attention à ce que ce script, s'il ne peut plus être chargé ne fasse pas tomber notre page. Vous pouvez d'ailleurs tester cela dans webpagetest en indiquant dans la configuration SPOF les domaines que vous souhaitez ne pas pouvoir charger.
+                            Évitez charger contenus de manière bloquantes, décalez chargements plus tard, en chargeant asynchrone par exemple. <br />
 
-                            Évitez de charger ces contenus de manière bloquantes, et décalez les chargements plus tard, en les chargeant en asynchrone par exemple.
+                            avons également mis l'accent sur qualité ressources externes. Tout ce que je vous ai dit plus tôt sur compression des contenus, le cache, etc. n'est parfois pas mis en place sur ces scripts partenaires. <br />
 
-                            Nous avons également mis l'accent sur la qualité de ces ressources externes. Tout ce que je vous ai dit plus tôt sur la compression des contenus, le cache, etc. n'est parfois pas mis en place sur ces scripts partenaires.
+                            regardez bien  ce que vous avez sur vos sites, lisez bien les documents d'intégration de ces scripts (qualité technique du module) <br />
+                            Et n'hésitez pas à leur remonter ces problèmes pour qu'ils fassent le nécessaire : ça sera bénéfique pour eux et surtout pour vous.  <br />
 
-                            Donc regardez bien  ce que vous avez sur vos sites, lisez bien les documents d'intégration de ces scripts qui vous en diront suffisament long sur la qualité technique du module.
-                            Et n'hésitez pas à leur remonter ces problèmes pour qu'ils fassent le nécessaire : ça sera bénéfique pour eux et surtout pour vous.
+                            Pour terminer, ces scripts sont là souvent pour des raisons de business et il faut être conscient qu'ils ont quand même un coût technique. <br />
 
-                            Pour terminer, ces scripts sont là souvent pour des raisons de business et il faut être conscient qu'ils ont quand même un coût technique.
-
-                            Pour comparer entre decitre.fr et une de nos marques blanches qui est sur la même plateforme, mais avec nettement moins de ces scripts externe, on a un delta de près d'une seconde sur le temps de chargement global entre les deux sites.
+                            Pour comparer entre decitre.fr et une de nos MB qui est mm plateforme, mais avec nettement moins de ces scripts externe ==>  delta de près d'1s sur le temps de chargement global entre les deux sites.
                         </aside>
                     </section>
 
@@ -727,19 +728,16 @@
                         <h2>Paralléliser les chargements des images</h2>
 
                         <aside class="notes">
-                            Homepage (création édito, visuels produits, images dans la CSS) + 50 images utilisées sur la page.
+                            Homepage (création édito, visuels produits, images dans la CSS) + 50 images utilisées sur la page. <br/>
                             FP quarantaine. Les images sont le type de ressource le + appelé <br/>
                             HTTP 1, navigateur peut paralléliser les appels, mais limite de 6 connexions/domaine. Comment détourner limite et améliorer le tmps de chargement ?  <br />
                             Technique pour augmenter la capacité à paralléliser en chargeant sur de nouveaux domaines : domain-sharding <br />
-                            www.decitre.fr/mon-image.jpg ==> a.media.decitre.fr/mon-image.jpg (image : media, reste www)
-                            Dans notre cas, compte tenu du nombre d'image sur nos pages, 2 sous domaines (a et b) pour augmenter la capacité du navigateur à paralléliser les appels et donc accélérer l'arrivée des images. <br/>
+                            www.decitre.fr/mon-image.jpg ==> media.decitre.fr/mon-image.jpg (image : media, reste www)
 
+                            Attention : nouveau domaine == 1 résolution DNS à faire + nouvelle connexion potentiellement très coûteuse. <br />
+                            Peut ne pas être rentable. Bien évaluer le nombre de domaine sur lequel on compte effectuer la répartition. <br />
 
-                            Attention : nouveau domaine == 1 résolution DNS à faire. Peut ne pas être rentable. Bien évaluer le nombre de domaine sur lequel on compte effectuer la répartition. <br />
-                            Penser au cache et au SEO : toujours sharder sur la même url (chez nous, le magento gére le sharding), il faut donc avoir des règles de sharding qui attribue toujours la même url <br />
-                            Post traitement de CSS pour effectuer le sharding lors de la concat. Magento gère les autres images ==> transparent image toujours inclue, peu importe si le mécanisme est actif ou non et peu importe le nombre de domaines de sharding configuré.
-
-                            Exemple de test sans impact final. On voit l'effet dans webpagetest, la parallélisation fonctionne. toutefois il n’y a pas eu gain notable suite à cette mise en place.
+                            Exemple de test sans impact final. On voit l'effet dans webpagetest, la parallélisation fonctionne. toutefois pas d'impact dans GA il n’y a pas eu gain notable suite à cette mise en place.
                         </aside>
                     </section>
 
@@ -749,13 +747,13 @@
 
 
                         <aside class="notes">
-                            Scripts externes, vidéos, il arrive parfois qu'on ait à sortir de notre à outil à la balise iframe.
-                            Et niveau contenu bloquant, c'est pas ce qu'il y a de mieux.
+                            Scripts externes, vidéos, il arrive parfois qu'on ait à sortir de notre à outil à la balise iframe. <br />
+                            Et niveau contenu bloquant, c'est pas ce qu'il y a de mieux. <br />
 
-                            Pour ça, nous nous sommes créés un mécanisme de chargement d'iframe asynchrone, activé au domContentLoaded.
+                            Pour ça, nous nous sommes créés mécanisme de chargement d'iframe asynchrone, activé une fois que  le contenu principal est chargé.
 
                             Cela nous permet de créer l'iframe à ce moment là avec les paramètres que nous souhaitons.
-                            Nous pu décaler les chargements de ces contenus qui sont moins prioritaires à plus tard et enlever cette source de blocage de nos pages.
+                            Avons pu décaler les chargements contenus moins prioritaires à plus tard et enlever source de blocage de nos pages.
 
                         </aside>
                     </section>
@@ -775,32 +773,32 @@
                     <section>
                         <h2>HTTP/2</h2>
                         <aside class="notes">
-                            Un des gros chantiers vers lequel on va se pencher dans les prochains mois sera de basculer vers HTTP/2.
+                            Gros chantiers vers lequel on va se pencher dans les prochains mois sera de basculer vers HTTP/2. <br />
 
-                            Pourquoi cette bascule est intéressante ? Après 15 ans de bons et loyaux services, HTTP/2 remplace HTTP 1.1.
+                            Pourquoi cette bascule est intéressante ? <br />
 
-                            Parmi les avancées de HTTP/2 on peut citer :
-                            Le multiplexage des requêtes : le navigateur n’ouvre plus qu’une seule connexion par domaine, mais il peut désormais envoyer et recevoir plusieurs messages en parallèles.
-                            La compression des headers est désormais possible que ce soit pour les réponses ou les requêtes. Cela permet de réduire la bande passante utilisée.
-                            Le cache pushing qui permet dans une réponse d'envoyer du contenu lié. Par exemple, lorsque je demande ma page HTML, je peux directement lier la feuille de style.
+                            Parmi les avancées de HTTP/2 on peut citer : <br />
+                            Le multiplexage des requêtes : le navigateur n’ouvre plus qu’une seule connexion par domaine, mais il peut désormais envoyer et recevoir plusieurs messages en parallèles. <br />
+                            La compression des headers est désormais possible que ce soit pour les réponses ou les requêtes. Cela permet de réduire la bande passante utilisée.<br />
+                            Le cache pushing qui permet dans une réponse d'envoyer du contenu lié. Par exemple, lorsque je demande ma page HTML, je peux directement lier la feuille de style. <br />
 
-                            Au final, parmi les points dont je vous ai parlé plus tôt, si on prends le domain sharding ou le keepAlive, voire la concaténation des assets ceux-ci sont rendus inutiles par une implémentation de HTTP/2.
+                            Au final, parmi les points dont je vous ai parlé plus tôt, si on prends le domain sharding ou le keepAlive, voire la concaténation des assets ceux-ci sont rendus inutiles par une implémentation de HTTP/2. <br />
                         </aside>
                     </section>
 
                     <section>
                         <h2>Autres pistes</h2>
                         <aside class="notes">
-                            Ensuite voici quelques uns des points sur lesquels nous pouvons également agir.
+                            Ensuite voici quelques uns des points sur lesquels nous pouvons également agir. <br />
 
-                            Une des optimisations possibles serait d'extraire la css critique, c'est à dire la partie de la CSS nécessaire pour afficher le contenu visible au dessus de la ligne de flotaison et l'intégrer dans le HTML.
-                            Ainsi on améliore le temps d'affichage de la page.
-                            Pour nous, la difficulté c'est d'extraire la partie critique de la css qui réponde aux différents affichages de nos pages.
-                            On a trop de contenus différents possibles, ce qui fait que nous avons mis cette optimisation de côté.
+                            Une des optimisations possibles serait d'extraire la css critique, c'est à dire la partie de la CSS nécessaire pour afficher le contenu visible au dessus de la ligne de flotaison et l'intégrer dans le HTML. <br />
+                            Ainsi on améliore le temps d'affichage de la page. <br />
+                            Pour nous, la difficulté c'est d'extraire la partie critique de la css qui réponde aux différents affichages de nos pages. <br />
+                            On a trop de contenus différents possibles, ce qui fait que nous avons mis cette optimisation de côté. <br />
 
-                            Il y a également un gros point dont je n'ai pas parlé, et qui va concerner l'optimisation de notre code HTML et CSS.
-                            L'object est que le navigateur le traite et en fasse le rendu au plus vite et attendre le taux de rafraichissement de 60fps pour avoir la meilleure fluidité possible à l'écran.
-                            Mais c'est une partie sur laquelle nous ne sommes absolument pas penchés.
+                            Il y a également un gros point dont je n'ai pas parlé, et qui va concerner l'optimisation de notre code HTML et CSS.<br />
+                            L'object est que le navigateur le traite et en fasse le rendu au plus vite et attendre le taux de rafraichissement de 60fps pour avoir la meilleure fluidité possible à l'écran.<br />
+                            Mais c'est une partie sur laquelle nous ne sommes absolument pas penchés.<br />
                         </aside>
                     </section>
                 </section>
@@ -824,18 +822,19 @@
                     <section>
                         <h2>Impliquez vos équipes</h2>
                         <aside class="notes">
-                            Comme la revue de code, le testing ou pleins d'autres bonnes pratiques, la performance web doit rentrer dans votre culture d'équipe.
+                            Comme la revue de code, le testing ou pleins d'autres bonnes pratiques, la performance web doit rentrer dans votre culture d'équipe. <br />
 
-                            Mettez des process pour les impacts des modifications, par exemple en pensant à tester vos pages dans un webpagetest après un développement.
+                            Mettez des process pour les impacts des modifications, par exemple en pensant à tester vos pages dans un webpagetest après un développement. <br />
 
-                            Ajoutez dans votre intégration continue des mesures régulières pour en suivre l'évolution. Par exemple avec le projet Phantomas qui permet de collecter tout un ensemble de mesures.
+                            Ajoutez dans votre intégration continue des mesures régulières pour en suivre l'évolution. Par exemple avec le projet Phantomas qui permet de collecter tout un ensemble de mesures. <br />
 
-                            Chez nous, on utilise gtmetrix. C'est un outil SAAS qui permet de tester plusieurs fois par jours certaines de nos pages critiques. Et on reçoit ensuite toutes les semaines l'évolution des métriques sur ces pages.
+                            Chez nous, on utilise gtmetrix. C'est un outil SAAS qui permet de tester plusieurs fois par jours certaines de nos pages critiques. <br />
+                            Et on reçoit ensuite toutes les semaines l'évolution des métriques sur ces pages. <br />
 
-                            Enfin, certes en tant qu'équipe de développement, nous avons un impact fort sur le site. Mais nous ne sommes pas les seuls à influer sur le contenu du site.
-                            Nous avons aussi chez nous des équipes éditoriales qui interviennent tous les jours sur le site.
+                            Enfin, certes en tant qu'équipe de développement, nous avons un impact fort sur le site. Mais nous ne sommes pas les seuls à influer sur le contenu du site. <br />
+                            Nous avons aussi chez nous des équipes éditoriales qui interviennent tous les jours sur le site. <br />
 
-                            Donc expliquez-leur et vendez-leur votre culture de la webperf pour qu'ils se l'approprient.
+                            Donc expliquez-leur et vendez-leur votre culture de la webperf pour qu'ils se l'approprient. <br />
                             Exposez vos métriques et accompagnez les dans l'application de vos process, de manière à ce que tout ceux qui travaillent sur vos sites aient conscience de ces enjeux.
                         </aside>
                     </section>
@@ -843,16 +842,16 @@
                     <section>
                         <h2>Tout ça pour quels résultats</h2>
                         <aside class="notes">
-                            Durant les deux dernières années, on a de manière itérative, effectué toutes ces modifications, dans l'objectif de charger le minimum, au plus vite en décalant le superflu à plus tard.
+                            Durant les deux dernières années, on a de manière itérative, effectué toutes ces modifications, dans l'objectif de charger le minimum, au plus vite en décalant le superflu à plus tard. <br />
 
-                            Plein d’optimisation, mais contrairement aux exemples célèbres cités en intro, il n'y pas eu d’effet sur le business ou sur le SEO.
+                            Plein d’optimisation, mais contrairement aux exemples célèbres cités en intro, il n'y pas eu d’effet sur le business ou sur le SEO. <br />
 
-                            A voir sur le plus long terme, car beaucoup de grosses modifications ont été faites au cours de la dernière année.
+                            A voir sur le plus long terme, car beaucoup de grosses modifications ont été faites au cours de la dernière année. <br />
 
-                            Mais même si d'un point de vue business, les effets sont mitigées, d'un point de vue de la perception utilisateur, ça reste bénéfique d'avoir un site et des pages qui répondent plus vite.
+                            Mais même si d'un point de vue business, les effets sont mitigées, d'un point de vue de la perception utilisateur, ça reste bénéfique d'avoir un site et des pages qui répondent plus vite. <br />
 
-                            Dans tous les cas, pour moi l'objectif de ce sujet c'était de vous présenter ces aspects.
-                            De montrer que même dans une petite équipe on peut travailler sur ces éléments qui pour la plupart sont assez faciles à mettre en oeuvre,
+                            Dans tous les cas, pour moi l'objectif de ce sujet c'était de vous présenter ces aspects. <br />
+                            De montrer que même dans une petite équipe on peut travailler sur ces éléments qui pour la plupart sont assez faciles à mettre en oeuvre. <br />
                             Et aussi de vous rappeler qu'il n'y a pas le back dans la vie mais également plein de travail super intéressant à faire de l'autre côté du serveur.
                         </aside>
                     </section>
