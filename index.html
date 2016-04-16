@@ -67,7 +67,7 @@
                         <h2>L'équipe</h2>
 
                         <ul>
-                            <li>3 développeurs + 1 responsable technique/li>
+                            <li>3 développeurs + 1 responsable technique</li>
                             <li>une dizaine de personnes hors technique</li>
                         </ul>
 
@@ -320,7 +320,12 @@
                     <section>
                         <h2>Supprimer les images inutiles</h2>
 
-                        // code bouton moche + images
+                        <div class="span6">
+                            <div>Image moche</div>
+                        </div>
+                        <div class="span6">
+                            <div>Code HTML bouton moche</div>
+                        </div>
 
                         <aside class="notes">
 
@@ -391,7 +396,24 @@
                     <section>
                         <h2>Utiliser les Data URI</h2>
 
-                        // TODO faire un code avant/après
+                        <div>
+                            <pre>
+                                <code data-trim data-noescape>
+.reduction {
+  background-image: url('bon_reduction.png');
+}
+                                </code>
+                            </pre>
+                        </div>
+                        <div>
+                            <pre>
+                                <code data-trim data-noescape>
+.reduction {
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEU....');
+}
+                                </code>
+                            </pre>
+                        </div>
 
 
 
@@ -408,13 +430,15 @@
                     <section>
                         <h2>Exemple concret avec le footer</h2>
 
-                        <img src="images/footer/avant_image.png">
 
-                        <img src="images/footer/apres.png">
-
-                        // image avant après
-
-                        // webpagetest avant après
+                        <div class="span6">
+                            <div>Avant</div>
+                            <img src="images/footer/avant_image.png">
+                        </div>
+                        <div class="span6">
+                            <div>Après</div>
+                            <img src="images/footer/apres.png">
+                        </div>
 
                         <aside class="notes">
 
@@ -434,13 +458,6 @@
                         <img src="images/footer/graph.png">
 
                         <aside class="notes">
-
-                            exemple le plus visuellement parlant du travail sur images est ce que nous avons fait sur notre footer. <br />
-                            Voici le pied de page tel qu'il était affiché il y a encore quelques mois. <br />
-                            En rouge images spécifiquement utilisées pour ce bloc. <br />
-                            en tout plus de 10 images utilisées pour ce footer.<br />
-                            Voici ce que nous avons fait pour le remplacer en utilisant les différentes techniques dont je viens de parler. <br />
-                            On a refait un peu le design et toujours en rouge, on retrouve les différentes images sur la nouvelle. <br />
 
                             Pour finir le comparatif, deux webpage tests avant et après changement. <br />
                             Non seulement, nettoyage permis d'avoir à un moindre coût un footer plus moderne, <br />
@@ -475,9 +492,11 @@
                     <section>
                         <h2>Garder les connexions ouvertes</h2>
 
-                        // TODO montrer capture requete en parallèle
-
-                        KeepAlive
+                        <ul>
+                            <li>Utiliser le Keep-Alive</li>
+                            <li>Configurer la durée d'ouverture</li>
+                            <li>Attention à ne pas saturer les serveurs</li>
+                        </ul>
 
                         <aside class="notes">
                             On a vu tout à l'heure qu'à chaque fois que le navigateur récupèrait un fichier, il établissait une connexion. <br />
@@ -500,8 +519,8 @@
                         <h2>Garder les connexions ouvertes</h2>
 
                         <img src="images/slow_start.jpg">
-                        
-                        
+
+
                         <aside class="notes">
                             profite du Keep Alive pour parler mécanisme de TCP : le Slow Start <br />
 
@@ -515,14 +534,14 @@
 
                             En complément, slow start restart : régler serveur pour que TCP ne réinitialise pas fenêtre la connexion est mise en attente. <br />
                         </aside>
-                               
+
                     </section>
 
                     <section>
                         <h2>Concaténer les assets</h2>
 
                         <aside class="notes">
-                            Bcp de fichier js et CSS <br />
+                            Je ne vous apprends rien en vous disant qu'il y a bcp de fichier js et CSS <br />
                             chez nous, 10 css et 70 js  <br />
                             Comme on l'a vu tout à l'heure charger ces fichiers un par un serait catastrophique pour les performances réseaux. <br />
                             On va donc concaténer ensemble tous fichiers javascripts et tous fichiers CSS <br/>
@@ -624,13 +643,12 @@
                             <li>Pas en place chez nous</li>
                         </ul>
 
-                        // TODO chiffrer gain potentiel
-
                         <aside class="notes">
                             Après la concat des CSS et JS, bonne pratique suivante : minification <br />
                             Suppression des caractères inutiles (espaces, tab), commentaires, simplification des noms de variables pour le JS.  <br />
                             Permet d'avoir des versions allégées en prod <br />
                             Pas mis en place chez nous. Cout de mise de place de la couche supplémentaire pas assez rentable par rapport aux autres modifications possibles pour le même temps. <br />
+                            // TODO chiffrer gain potentiel
                         </aside>
                     </section>
 
@@ -640,6 +658,7 @@
 
                         <ul>
                             <li>Alléger les requêtes HTTP</li>
+                            <li>Création d'un domaine sans cookies pour livrer les images</li>
                         </ul>
 
                         <aside class="notes">
@@ -864,35 +883,42 @@
 
                     <section>
                         <h2>Autres pistes</h2>
-                        
+
                         <p>Travailler sur le chemin critique du rendu navigateur</p>
-                        
+
                         <aside class="notes">
-                            Ensuite voici quelques uns des points sur lesquels nous pouvons également agir. <br />
+                            En piste d'amélération, nous pourrions également nous pencher sur les optimisations côté navigateur pour que la page s'affiche au plus tôt les contenus nécessaires à l'utilisateur. <br />
 
-                            Une des optimisations possibles serait d'extraire la css critique, c'est à dire la partie de la CSS nécessaire pour afficher le contenu visible au dessus de la ligne de flotaison et l'intégrer dans le HTML. <br />
-                            Ainsi on améliore le temps d'affichage de la page. <br />
-                            Pour nous, la difficulté c'est d'extraire la partie critique de la css qui réponde aux différents affichages de nos pages. <br />
-                            On a trop de contenus différents possibles, ce qui fait que nous avons mis cette optimisation de côté. <br />
+                            Notamment, en optimisant le chemin critique du rendu navigateur, nous pourrions arriver à ça. <br/>
 
-                            Il y a également un gros point dont je n'ai pas parlé, et qui va concerner l'optimisation de notre code HTML et CSS.<br />
-                            L'object est que le navigateur le traite et en fasse le rendu au plus vite et attendre le taux de rafraichissement de 60fps pour avoir la meilleure fluidité possible à l'écran.<br />
-                            Mais c'est une partie sur laquelle nous ne sommes absolument pas penchés.<br />
+                            Dejà en nettoyant et continuant de simplifier le code HTML et CSS, puis en travaillant par exemple sur l'extraction de la partie critique de la CSS et en l'injectant dans le code HTML<br />
+
+
+                            Mais c’est un autre pan de l’optimisation de la performance sur lequel nous n’avons pas travaillé et que je ne développerai pas. <br/>
                         </aside>
+                    </section>
+
+                    <section>
+                        <h2>Pour aller plus loin</h2>
+
+                        lien en vrac : page speed - yslow
+                        doc google + edasf + autre
+                        compte twitter
+
                     </section>
                 </section>
 
                 <section>
                     <h2>Impliquez vos équipes</h2>
-                    
+
                     <ul>
                         <li>Intégrez la web performance dans votre culture d'équipe</li>
                         <li>Créez vos process</li>
                         <li>Mesurez</li>
                         <li>Vendez votre travail</li>
                     </ul>
-                    
-                    
+
+
                     <aside class="notes">
                         Comme la revue de code, le testing ou pleins d'autres bonnes pratiques, la performance web doit rentrer dans votre culture d'équipe. <br />
 
@@ -914,9 +940,9 @@
 
                 <section>
                     <h2>Tout ça pour quels résultats</h2>
-                    
+
                     <img src="images/graph_final_petit.png">
-                    
+
                     <aside class="notes">
                         Durant les deux dernières années, on a de manière itérative, effectué toutes ces modifications, dans l'objectif de charger le minimum, au plus vite en décalant le superflu à plus tard. <br />
 
@@ -957,6 +983,7 @@
                 progress: true,
                 history: true,
                 center: true,
+                slideNumber: true,
 
                 transition: 'slide', // none/fade/slide/convex/concave/zoom
 
