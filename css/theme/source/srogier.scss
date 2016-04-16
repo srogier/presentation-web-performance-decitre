@@ -21,7 +21,7 @@ $backgroundColor: #fdfdfd;
 $mainColor: #333;
 $headingColor: #333;
 
-$mainFontSize: 30px;
+$mainFontSize: 36px;
 $mainFont: 'Source Sans Pro', Helvetica, sans-serif;
 $headingFont: 'Source Sans Pro', Helvetica, sans-serif;
 $headingTextShadow: none;
@@ -32,7 +32,7 @@ $linkColor: #00B4FF;
 $linkColorHover: lighten( $linkColor, 15% );
 $selectionBackgroundColor: lighten( $linkColor, 25% );
 
-$heading1Size: 2.5em;
+$heading1Size: 2em;
 $heading2Size: 1.6em;
 $heading3Size: 1.3em;
 $heading4Size: 1.0em;
@@ -59,4 +59,13 @@ section.has-dark-background {
   float: left;
   min-height: 1px;
   margin-left: 20px;
+}
+
+.reveal {
+  pre {
+    box-shadow: none;
+    code {
+      padding: 10px;
+    }
+  }
 }

@@ -128,13 +128,15 @@
 
                         <ul>
                             <li>Corrélation performance technique et performance business</li>
+                            <li>Walmart : +1s : +2% sur le taux de conversion</li>
+                            <li>Google : +400ms : -0.6% sur le nombre de rechercher</li>
                             <li>Impact sur les nombre de pages, le rebond, la conversion</li>
                         </ul>
                         <aside class="notes">
                             Pourquoi la PW est importante ? pourquoi cherche-t-on à afficher le plus vite possible les pages à nos utilisateurs ? <br />
                             Exemple connus monde du web corréler perf technique et perf business <br />
                             Walmart : 1s de chargement => augmentation du taux de conversion de 2 %; <br />
-                            Google : tps chargement + 500ms => baisse de 20% du traffic.  <br />
+                            Google : tps chargement + 400ms => baisse de 0.6% sur nb de recherche.  <br />
                             tps de chargement , Influence sur le nombre de page vues, sur le taux de rebond, sur la conversion <br />
                             Critère SEO : google admet vitesse pris en compte dans leur algo de recherche <br />
                         </aside>
@@ -144,7 +146,7 @@
                     <section>
                         <h2>Qu’est-ce que le Web ?</h2>
 
-                        <img src="images/osi.jpg">
+                        <img src="images/network/osi_vs_tcp.png">
 
                         <aside class="notes">
                             On va ressortir des cartons le modèle OSI.  <br />
@@ -159,7 +161,7 @@
                     <section>
                         <h2>Qu’est-ce que le Web ?</h2>
 
-                        <img src="images/client_serveur.jpg">
+                        <img src="images/network/client_serveur.png">
 
                         <aside class="notes">
                             Le web, C un système client serveur. <br />
@@ -179,7 +181,6 @@
 
                         <aside class="notes">
                             La partie serveur va donc être assez courte.  <br />
- <br />
                             Quand même vous parler des outils utilisé pour suivre les performances code PHP + grosses optimisations faites. <br />
                         </aside>
                     </section>
@@ -187,10 +188,9 @@
                     <section>
                         <h2>Mesurer les performances</h2>
 
-                        <ul>
-                            <li>New relic</li>
-                            <li>Blackfire</li>
-                        </ul>
+                        <h3>New Relic</h3>
+
+                        <img src="images/newrelic.png">
                         <aside class="notes">
                             Pour commencer, parler des principaux outils que nous utilisons pour suivre développements PHP.<br />
                             New Relic suivre tout ce qui se passe sur nos serveurs. <br />
@@ -198,8 +198,19 @@
                             Retrouvons dedans toutes les erreurs applicatives, les temps de réponse, requêtes et pages lentes, évolution du trafic, le tout historisé. <br />
                             Très bon outil pour suivre évolution mode macro sur quelques mois  <br />
                             mais aussi avoir aperçu ce qui se passe pendant laps de temps très court lorsqu rencontre des pics de charge. <br />
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h2>Mesurer les performances</h2>
+
+                        <h3>Blackfire</h3>
+
+                        <img src="images/blackfire.png">
+
+                        <aside class="notes">
                             Pour rentrer plus dans le détail et suivre nos optimisations de code PHP, nous utilisons Blackfire. <br />
-                            Je pense que vous connaissez tous, outil qui permet profiler dans le détail le temps, la mémoire consommée par nos scripts php pour identifier les appels les plus consommateurs. <br />
+                            Outil qui permet profiler dans le détail le temps, la mémoire consommée par nos scripts php pour identifier les appels les plus consommateurs. <br />
                             C'est un outil qu'on utilise surtout phase de dév lorsque effectuons nos modifications, pour s'assurer pas de régression de performance.<br />
                         </aside>
                     </section>
@@ -233,6 +244,8 @@
                     <section>
                         <h1>L'importance du réseau</h1>
 
+                        Impact de la bande passante
+
                         <img src="images/bande_passante.png">
 
                         <aside class="notes">
@@ -249,6 +262,7 @@
                     <section>
                         <h2>L'importance du réseau</h2>
 
+                        Impact de la latence
                         <img src="images/latence.png">
 
                         <aside class="notes">
@@ -257,15 +271,13 @@
                             Temps qui va principalement dépendre du réseau sur lequel vous vous trouvez (mobile, connexion 3G entre 100 et 500ms, fixe  général inférieure à 20 ms)<br />
                             La distance physique entre le navigateur et le serveur influe également. <br />
                             Prend en compte le temps qu'il faut au signal pour passer de l'un à l'autre : + on est loin, plus la latence va être importante. <br/>
-                            raison pour lesquelles utiliser un CDN est avantageux. Votre contenu est dupliqué sur des serveurs répartis tout autour du monde. Contenu servi par le serveur le + proche pour limiter l'impact de la latence. <br />
 
-                           tester très facilement impact latence dans outils de développement de votre navigateur. Réglage seuils de bande passante et de latence pour en visualiser l'impact. <br />
-                           Sur mac, paramétrer dans options de connexion. <br />
-                           Donc pour minimiser l'impact de la latence, on a deux possibilités : soit on rapproche navigateur et serveur pour en réduire la valeur, soit on réduit le nombre de requête serveur pour en réduire la quantité. <br />
+                            tester très facilement impact latence dans outils de développement de votre navigateur. Réglage seuils de bande passante et de latence pour en visualiser l'impact. <br />
+                            Sur mac, paramétrer dans options de connexion. <br />
+                            Donc pour minimiser l'impact de la latence, on a deux possibilités : soit on rapproche navigateur et serveur pour en réduire la valeur, soit on réduit le nombre de requête serveur pour en réduire la quantité. <br />
 
                         </aside>
                     </section>
-
 
                     <section>
                         <h2>Anatomie d’un hit HTTP</h2>
@@ -297,12 +309,24 @@
                             5. le serveur (traite, prépare contenu). attente du premier paquet reçu par le nav : TTFB<br />
                             5. Téléchargement <br />
 
+
+                        </aside>
+                    </section>
+
+
+                    <section>
+                        <h2>WebPageTest.org</h2>
+
+                        <img src="images/webpagetest.png">
+
+                        <aside class="notes">
+
                             Pour visualiser ces informations, vous pouvez également utiliser webpagetest.org. <br />
                             URL + lieu physique test joués + nav + eventuellement réseau (BP + latence). <br />
-                            Attente qq sec le tps que le test s'éxécute (2 waterfall 1er hit et impact cache)<br />
                             Installable sur infra pour tests urls dev + privées <br />
                         </aside>
                     </section>
+
 
                 </section>
 
@@ -321,10 +345,22 @@
                         <h2>Supprimer les images inutiles</h2>
 
                         <div class="span6">
-                            <div>Image moche</div>
+                            <img src="images/boutons.png" style="margin-top: 80px">
                         </div>
                         <div class="span6">
-                            <div>Code HTML bouton moche</div>
+                            <pre>
+                                <code>
+<button class="button">
+    <span>
+        <span>
+            <span>
+                Commander
+            </span>
+        </span>
+    </span>
+</button>
+                                </code>
+                            </pre>
                         </div>
 
                         <aside class="notes">
@@ -383,7 +419,7 @@
                             Pour ces images là : choix d'utiliser des font-icônes. <br />
                             Un fichier svg par icone, tache qui compiles cvgs en font utilisables sur le site. <br />
 
-                            Remplacement de plusieurs sprites, ici chargement d'un seul fichier font permet avoir centaines icones chargées. <br />
+                            Remplacement de plusieurs  , ici chargement d'un seul fichier font permet avoir centaines icones chargées. <br />
                             Le tout pour une taille raisonnable (fichier font 16 Ko poour comparer l'image de 4 icônes 2 Ko) <br />
 
                             Au final sur decitre.fr, on utilise peu de sprites. La quasi totalité de nos pictogrammes sont disponibles dans la font d'icônes.  <br />
@@ -397,18 +433,20 @@
                         <h2>Utiliser les Data URI</h2>
 
                         <div>
+                            Avant :
                             <pre>
                                 <code data-trim data-noescape>
-.reduction {
-  background-image: url('bon_reduction.png');
+.remise {
+  background-image: url('vignette_remise.png');
 }
                                 </code>
                             </pre>
                         </div>
                         <div>
+                            Après :
                             <pre>
                                 <code data-trim data-noescape>
-.reduction {
+.remise {
   background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEU....');
 }
                                 </code>
@@ -431,14 +469,7 @@
                         <h2>Exemple concret avec le footer</h2>
 
 
-                        <div class="span6">
-                            <div>Avant</div>
                             <img src="images/footer/avant_image.png">
-                        </div>
-                        <div class="span6">
-                            <div>Après</div>
-                            <img src="images/footer/apres.png">
-                        </div>
 
                         <aside class="notes">
 
@@ -446,6 +477,16 @@
                             Voici le pied de page tel qu'il était affiché il y a encore quelques mois. <br />
                             En rouge images spécifiquement utilisées pour ce bloc. <br />
                             en tout plus de 10 images utilisées pour ce footer.<br />
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h2>Exemple concret avec le footer</h2>
+
+
+                        <img src="images/footer/apres.png">
+
+                        <aside class="notes">
                             Voici ce que nous avons fait pour le remplacer en utilisant les différentes techniques dont je viens de parler. <br />
                             On a refait un peu le design et toujours en rouge, on retrouve les différentes images sur la nouvelle. <br />
                         </aside>
@@ -455,13 +496,14 @@
                     <section>
                         <h2>Exemple concret avec le footer</h2>
 
-                        <img src="images/footer/graph.png">
+                        <img src="images/footer/graph_modif.png">
 
                         <aside class="notes">
 
-                            Pour finir le comparatif, deux webpage tests avant et après changement. <br />
-                            Non seulement, nettoyage permis d'avoir à un moindre coût un footer plus moderne, <br />
-                            mais aussi avons pu faire économie d'un certain nombre d'appel serveurs et accélerer l'affichage de nos pages.<br />
+                            Pour finir effet sur nombre de ressources <br />
+                            Non seulement, nettoyage permis moindre coût footer moderne, <br />
+                            économie d'un certain nombre d'appel serveurs (graphe jaune)<br />
+                            effet sur temps de chargement 0.1/0.2s ==> peu<br />
 
                         </aside>
                     </section>
@@ -472,7 +514,7 @@
 
                         <ul>
                             <li>Cache HTTP</li>
-                            <li>Durée de validaté configurable</li>
+                            <li>Durée de validité configurable</li>
                         </ul>
 
                         <aside class="notes">
@@ -484,7 +526,7 @@
                             En fonction du type de page (recherche, FP, cat), règle ensuite durée de validité avec une valeur allant de qq minutes à une heure. <br />
                             Pour les images, durée de mise en cache + importante et monte à qq heures.  <br />
                             Quant aux assets js/css, là on utilise une valeur de cache beaucoup plus importante.  <br />
-                            Pour ces fichiers, les urls uniques et évoluent en fonction contenu ==>  durée de cache peut être en théorie illimitée.  <br />
+                            Pour ces fichiers, les urls évoluent en fonction contenu ==>  durée de cache peut être en théorie illimitée.  <br />
                         </aside>
                     </section>
 
@@ -533,6 +575,8 @@
                             L'intérêt réutiliser la connexion et KeepAlive ==> s'épargner le Slow Start nouvelle connexion + profiter d'une fenêtre de congestion avec une forte valeur.  <br />
 
                             En complément, slow start restart : régler serveur pour que TCP ne réinitialise pas fenêtre la connexion est mise en attente. <br />
+
+                            Démarrage 4 (10 sur kernel récents) segments de 1460o <br >
                         </aside>
 
                     </section>
@@ -556,9 +600,7 @@
                     <section>
                         <h2>Lazy-loader les images</h2>
 
-                        <ul>
-                            <li>Charger ce qui est affiché</li>
-                        </ul>
+                        <img src="images/homepage_lazyload.png">
 
 
                         <aside class="notes">
@@ -569,7 +611,7 @@
 
                             Pour résoudre problématique mis en place mécanisme sur visuels : le lazy loading. <br />
 
-                            Pour ceux qui ne connaissent pas, technique qui consiste à décaler chargement d’une ressource au moment où on en a vraiment besoin. <br />
+                            Technique qui consiste à décaler chargement d’une ressource au moment où on en a vraiment besoin. <br />
                             Pour visuels, revient à ne charger les images qu’à partir du moment où elles sont dans le viewport, CAD dans zone visible par l'utilisateur. <br />
 
                             temps de chargement initial de la page réduit et images ne sont chargées que si elles sont affichées par l’utilisateur.
@@ -581,24 +623,21 @@
                     <section>
                         <h2>Lazy-loader les images</h2>
 
-                        <img src="images/graph_lazy_load.png">
+                        <img src="images/graph_lazy_load_modif.png">
 
                         <aside class="notes">
 
-                            graphique qui réprésente le nb de requête (en jaune). <br />
-
-                            Comme vous pouvez le contaster on a réduit le nombre de ressources chargées.  <br />
+                            Comme vous pouvez le contaster on a réduit le nombre de ressources chargées (partie jaune).  <br />
 
                             Dans le cas des images de notre FP, permis d'économiser une vingtaine d'A/R avec le serveur. <br />
 
+                            On a également économisé 200Ko au chargement initial de la page <br />
+
                             En terme de temps de réponse, indicateurs de temps de chargement utilisateurs remontés dans GA indique passage de 4.80s à 4.10s, <br />
                             ce qui est une de plus grosses optimisations effectuées sur le site. <br />
+                            Peu impact perception utilisateur : zone allouée qui se rempli au fur & à mesure <br />
                         </aside>
                     </section>
-
-
-
-
 
                 </section>
 
@@ -667,7 +706,7 @@
                             Chaque hit sur le domaine du cookie ==> envoi du cokie. ==> coût car il faut uploader le cookie. <br />
                             Dans le cas de fichiers statiques comme les images ou les feuilles de style, quel intérêt a-t-on à transmettre les cookies utilisateurs ? Aucun. <br />
                             Autre domaine di-static pour servir ces ressources. Cookies liées à decitre.fr donc non envoyé. <br />
-                            Requete allégée. Appréciable mobile upload faible. <br />
+                            Requete allégée (300 octets à qq 2Ko en fonction de l'utilisation du site et des cookies présents) <br />
 
                         </aside>
                     </section>
@@ -678,14 +717,14 @@
                         <ul>
                             <li>Sensibiliser sur les risques</li>
                             <li>Intégrer un outil pour optimiser</li>
-                            <li>Nettoyage de nos images</li>
+                            <li>Nettoyage de nos images avec <a href="https://tinypng.com/">tinypng.com</a> </li>
                         </ul>
 
 
                         <aside class="notes">
                             J'ai beaucoup parlé d'image un peu plus tôt et du travail qui avait été fait pour en réduire le nombre. <br />
                             Autre problème concernant le poids. <br />
-                            Un jour, se retrouve avec images qui font un 1/2 Mo sur page d'accueil <br />
+                            Un jour, se retrouve avec images qui font 500 Ko sur page d'accueil <br />
                             Qu'avons nous fait pour empêcher cela ? <br />
                             Sensibiliser différentes équipes qui interviennent sur le site <br />
                             Si on n'explique pas risques liés au poids des images et ce que cela implique pour nos clients ==> on ne peut s'en prendre qu'à nous mêmes <br />
@@ -708,10 +747,10 @@
                             Jusqu'à partie historique css dans gros fichier de 5000 lignes. <br />
                             Peu d'orga, rangement par couche (1 couche === 1 fonctionnalité). Difficile de voir dans la css ce qui était vraiment utilisé et dans quelle partie de partie dl'application. <br />
                             Au fil des évos du site, code non utilisé, chargé et alourdi les données téléchargées. <br />
-                            Et c'est comme ça qu'on se retrouve avec 15% de css qui porte sur du code mort  <br />
+                            Et c'est comme ça qu'on se retrouve avec 15% de css qui porte sur du code mort qu'on a nettoyé <br />
                             profité d'une migration de la css existante vers sass pour ne porter que le code qui était réellement utilisé sur le site. <br />
                             fichiers séparés par type d'affichage ==> devrait à l'avenir limiter ce risque de cumul de code mort. <br />
-                            Néanmoins, sur le long terme, avoir un outil automatisé de détection du code css mort et une intégration continue sur ce point parait indispensable.
+                            Sur le long terme, avoir un outil automatisé de détection du code css mort comme uncss et une intégration continue sur ce point parait indispensable.
                         </aside>
                     </section>
 
@@ -769,12 +808,12 @@
                         </aside>
                     </section>
 
-
-
                     <section>
                         <h2>Auditer les scripts externes</h2>
 
                         <img src="images/requestmap.png">
+
+                        <a href="http://requestmap.webperf.tools/">http://requestmap.webperf.tools/</a>
 
                         <aside class="notes">
                             Tracking, retargeting, widget de réseaux sociaux, à un moment donné, finit par charger sur site scripts qu'on n'héberge pas ou sur lesquels pas la main. <br />
@@ -809,9 +848,6 @@
                         </aside>
                     </section>
 
-
-
-
                     <section>
                         <h2>Paralléliser les chargements des images</h2>
 
@@ -822,7 +858,7 @@
                         <aside class="notes">
                             Homepage (création édito, visuels produits, images dans la CSS) + 50 images utilisées sur la page. <br/>
                             FP quarantaine. Les images sont le type de ressource le + appelé <br/>
-                            HTTP 1, navigateur peut paralléliser les appels, mais limite de 6 connexions/domaine. Comment détourner limite et améliorer le tmps de chargement ?  <br />
+                            HTTP 1, navigateur peut paralléliser les appels, mais limite de 4 à 8 connexions/domaine. Comment détourner limite et améliorer le tmps de chargement ?  <br />
                             Technique pour augmenter la capacité à paralléliser en chargeant sur de nouveaux domaines : domain-sharding <br />
                             www.decitre.fr/mon-image.jpg ==> media.decitre.fr/mon-image.jpg (image : media, reste www)
 
@@ -832,28 +868,6 @@
                             Exemple de test sans impact final. On voit l'effet dans webpagetest, la parallélisation fonctionne. toutefois pas d'impact dans GA il n’y a pas eu gain notable suite à cette mise en place.
                         </aside>
                     </section>
-
-                    <section>
-                        <h2>Charger différement les iframe</h2>
-
-                        <ul>
-                            <li>Charger en non bloquant</li>
-                        </ul>
-
-
-                        <aside class="notes">
-                            Scripts externes, vidéos, il arrive parfois qu'on ait à sortir de notre à outil à la balise iframe. <br />
-                            Et niveau contenu bloquant, c'est pas ce qu'il y a de mieux. <br />
-
-                            Pour ça, nous nous sommes créés mécanisme de chargement d'iframe asynchrone, activé une fois que  le contenu principal est chargé.
-
-                            Cela nous permet de créer l'iframe à ce moment là avec les paramètres que nous souhaitons.
-                            Avons pu décaler les chargements contenus moins prioritaires à plus tard et enlever source de blocage de nos pages.
-
-                        </aside>
-                    </section>
-
-
                 </section>
 
                 <section>
@@ -875,7 +889,7 @@
                             Parmi les avancées de HTTP/2 on peut citer : <br />
                             Le multiplexage des requêtes : le navigateur n’ouvre plus qu’une seule connexion par domaine, mais il peut désormais envoyer et recevoir plusieurs messages en parallèles. <br />
                             La compression des headers est désormais possible que ce soit pour les réponses ou les requêtes. Cela permet de réduire la bande passante utilisée.<br />
-                            Le cache pushing qui permet dans une réponse d'envoyer du contenu lié. Par exemple, lorsque je demande ma page HTML, je peux directement lier la feuille de style. <br />
+                            Le content pushing qui permet dans une réponse d'envoyer du contenu lié. Par exemple, lorsque je demande ma page HTML, je peux directement lier la feuille de style. <br />
 
                             Au final, parmi les points dont je vous ai parlé plus tôt, si on prends le domain sharding ou le keepAlive, voire la concaténation des assets ceux-ci sont rendus inutiles par une implémentation de HTTP/2. <br />
                         </aside>
@@ -901,10 +915,22 @@
                     <section>
                         <h2>Pour aller plus loin</h2>
 
-                        lien en vrac : page speed - yslow
-                        doc google + edasf + autre
-                        compte twitter
-
+                        <div class="span6">
+                            <p>Mesurer </p>
+                            <ul>
+                                <li><a target="_blank" href="https://developers.google.com/speed/pagespeed/insights/">PageSpeed Insights</a></li>
+                                <li><a target="_blank" href="http://yslow.org/">Yslow</a></li>
+                                <li><a target="_blank" href="http://www.webpagetest.org/">WebPageTest</a></li>
+                                <li><a target="_blank" href="http://requestmap.webperf.tools/">Request Map Generator</a></li>
+                            </ul>
+                        </div>
+                        <div class="span6">
+                            <p>Se documenter</p>
+                            <ul>
+                                <li><a target="_blank" href="https://developers.google.com/web/fundamentals/performance/?hl=en">Performance Fundamentals - Google Developers</a></li>
+                                <li><a target="_blank" href="http://chimera.labs.oreilly.com/books/1230000000545">High Performance Browser Networking</a></li>
+                            </ul>
+                        </div>
                     </section>
                 </section>
 
