@@ -300,3 +300,6 @@ body {
   box-shadow: none; }
   .reveal pre code {
     padding: 10px; }
+
+.reveal .source {
+  font-size: 0.5em; }

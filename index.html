@@ -140,15 +140,15 @@
                         <h2>L'importance de la performance web</h2>
 
                         <ul>
-                            <li>Corrélation performance technique et performance business</li>
+                            <li>Causalité entre performance technique et performance business</li>
                             <li>Walmart : -1s ⇒ +2% sur le taux de conversion</li>
-                            <li>Google : +400ms ⇒ -0.6% sur le nombre de rechercher</li>
+                            <li>Google : +400ms ⇒ -0.6% sur le nombre de recherches</li>
                             <li>Impact sur le nombre de pages vues, les taux de rebond, conversion</li>
                         </ul>
                         <aside class="notes">
                             Pourquoi la PW est importante ? pourquoi cherche-t-on à afficher le plus vite possible les pages à nos utilisateurs ? <br />
 
-                            Exemple connus monde du web corréler perf technique et perf business <br />
+                            Exemple connus monde du web lien de cause à effet perf technique et perf business <br />
                             Walmart : 1s de chargement => augmentation du taux de conversion de 2 %; <br />
                             Google : tps chargement + 400ms => baisse de 0.6% sur nb de recherche.  <br />
                             tps de chargement , Influence sur le nombre de page vues, sur le taux de rebond, sur la conversion <br />
@@ -158,13 +158,32 @@
 
 
                     <section>
+                        <h2>Qu’est-ce que le Web ?</h2>
+
+                        <img src="images/network/client_serveur.png">
+
+                        <aside class="notes">
+                            <span class="time">03:30</span>
+                            Le web : système client serveur. <br />
+
+                            navigateur via réseau communique avec serveur backend. <br />
+
+                            Quand on affiche une page sur le temps d'affichage complet, 15 à 20% côté serveur. <br />
+
+                            80 et 85% du temps consacré au reste ==> cad traitement de la page par le navigateur et le transfert réseau. <br />
+
+                            Avec répartitions, pour accélérer sa page, marge de manoeuvre pas serveur. <br />
+
+                        </aside>
+                    </section>
+
+                    <section>
 
                         <h2>Qu’est-ce que le Web ?</h2>
 
                         <img src="images/network/osi_vs_tcp.png">
 
                         <aside class="notes">
-                            <span class="time">03:30</span>
                             Ressortir des cartons le modèle OSI.  <br />
 
                             Le web, s'appuie le protocole TCP/IP. <br />
@@ -176,26 +195,6 @@
                             TCP transport des données <br />
 
                             en haut couche application  (HTTP).  <br />
-
-                        </aside>
-                    </section>
-
-
-                    <section>
-                        <h2>Qu’est-ce que le Web ?</h2>
-
-                        <img src="images/network/client_serveur.png">
-
-                        <aside class="notes">
-                            Le web : système client serveur. <br />
-
-                            navigateur via réseau communique avec serveur backend. <br />
-
-                            Quand on affiche une page sur le temps d'affichage complet, 15 à 20% côté serveur. <br />
-
-                            80 et 85% du temps consacré au reste ==> cad traitement de la page par le navigateur et le transfert réseau. <br />
-
-                            Avec répartitions, pour accélérer sa page, marge de manoeuvre pas serveur. <br />
 
                         </aside>
                     </section>
@@ -285,6 +284,8 @@
 
                         <img src="images/bande_passante.png">
 
+                        <span class="source">Source : <a href="http://chimera.labs.oreilly.com/books/1230000000545/ch10.html#LATENCY_BOTTLENECK">High Performance Browser Networking</a> </span>
+
                         <aside class="notes">
                             <span class="time">08:00</span>
                             Pour que navigateur et serveur communiquent , passage réseau (partie basse vue dans modèle OSI de tout à l’heureà. <br />
@@ -306,16 +307,18 @@
                         Impact de la latence
                         <img src="images/latence.png">
 
+                        <span class="source">Source : <a href="http://chimera.labs.oreilly.com/books/1230000000545/ch10.html#LATENCY_BOTTLENECK">High Performance Browser Networking</a> </span>
+
                         <aside class="notes">
                             Prise en compte un second critère : la latence. <br />
 
                             Délai nécessaire pour que les paquets fasse A/R entre le navigateur et le serveur. <br />
 
-                            Temps qui va principalement dépendre du réseau sur lequel vous vous trouvez (mobile, connexion 3G entre 100 et 500ms, fixe  général inférieure à 20 ms)<br />
-
-                            La distance physique entre le navigateur et le serveur influe également. <br />
+                            Temps qui va principalement dépendre de la distance physique entre le navigateur et le serveur influe également. <br />
 
                             + on est loin, plus la latence va être importante. <br/>
+
+                            + réseau utilisé (mobile, connexion 3G entre 100 et 500ms, fixe  général inférieure à 20 ms)<br />
 
                             tester très facilement impact latence dans outils de développement de votre navigateur. Réglage seuils de bande passante et de latence pour en visualiser l'impact. <br />
 
@@ -543,6 +546,8 @@
 
                         <img src="images/footer/graph_modif.png">
 
+                        <p>25% de requêtes en moins</p>
+
                         <aside class="notes">
 
                             Pour finir effet sur nombre de ressources <br />
@@ -679,6 +684,9 @@
 
                         <img src="images/graph_lazy_load_modif.png">
 
+                        <p>25% de requêtes et code téléchargé en moins </p>
+                        <p>-12% sur le temps de chargement</p>
+
                         <aside class="notes">
 
                             Comme vous pouvez le contaster on a réduit le nombre de ressources chargées (partie jaune).  <br />
@@ -687,7 +695,7 @@
 
                             On a également économisé 200Ko au chargement initial de la page <br />
 
-                            En terme de temps de réponse, indicateurs de temps de chargement utilisateurs remontés dans GA indique passage de 4.80s à 4.10s, <br />
+                            En terme de temps de réponse, indicateurs de temps de chargement utilisateurs remontés dans GA indique passage de 4.80s à 4.20s, <br />
 
                             ce qui est une de plus grosses optimisations effectuées sur le site. <br />
 
@@ -1016,22 +1024,20 @@
 
 
                     <aside class="notes">
-                       revue de code, le testing ou pleins d'autres bonnes pratiques, PW faire partie culture équipe. <br />
+                        revue de code, testing ou plein bonnes pratiques, PW culture équipe. <br />
 
                         Mettez process pour impacts des modifications, ex webpagetest après un développement. <br />
 
                         On ne peut améliorer ce qu’on ne mesure pas <br />
-                        Ajoutez dans intégration continue mesures régulières pour suivre l'évolution. (phantomas). <br />
-
-                        Chez nous, gtmetrix. Outil SAAS test plusieurs fois par jours  pages critiques. <br />
-                        Reçoit ensuite régulierement l'évolution des métriques sur ces pages. <br />
+                        Ajoutez dans intégration continue mesures régulières pour suivre l'évolution. <br />
 
                         Enfin, certes en tant qu'équipe de développement ==> impact fort sur le site. <br />
                         Mais nous ne sommes pas les seuls à influer sur le contenu du site. <br />
                         chez nous des équipes éditos interviennent tous les jours<br />
 
-                        Donc expliquez à vos collègues et vendez-leur votre culture de la webperf pour qu'ils se l'approprient. <br />
-                        Exposez vos métriques et accompagnez les dans l'application de vos process, de manière à ce que tout ceux qui travaillent sur vos sites aient conscience de ces enjeux.
+                        Donc expliquez à vos collègues et vendez-leur votre culture de la PW pour qu'ils se l'approprient. <br />
+                        Exposez vos métriques et accompagnez-les dans l'application de vos process, <br />
+                        de manière à ce que tt ceux qui travaillent sur vos sites aient conscience de ces enjeux.
                     </aside>
                 </section>
 
@@ -1047,10 +1053,13 @@
 
                         A voir sur le plus long terme, car beaucoup de grosses modifications ont été faites au cours de la dernière année. <br />
 
-                        Mais même si d'un point de vue business, les effets sont mitigées, d'un point de vue de la perception utilisateur, ça reste bénéfique d'avoir un site et des pages qui répondent plus vite. <br />
+                        Mais même si d'un point de vue business ==> les effets mitigées,
+                        d'un point de vue perception utilisateur, bénéfique avoir site pages qui répondent + vite. <br />
 
-                        Dans tous les cas, pour moi l'objectif de ce sujet c'était de vous présenter ces aspects. <br />
+                        Pour moi l'objectif de ce sujet c'était de vous présenter ces aspects. <br />
+
                         De montrer que même dans une petite équipe on peut travailler sur ces éléments qui pour la plupart sont assez faciles à mettre en oeuvre. <br />
+
                         Et aussi de vous rappeler qu'il n'y a pas le back dans la vie mais également plein de travail super intéressant à faire de l'autre côté du serveur.
                     </aside>
                 </section>
