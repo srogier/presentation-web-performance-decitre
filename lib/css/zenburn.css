@@ -1,115 +1,81 @@
-/*
-Zenburn style from voldmar.ru (c) Vladimir Epifanov <voldmar@voldmar.ru>
-based on dark.css by Ivan Sagalaev
-*/
-
 .hljs {
-  display: block;
-  overflow-x: auto;
-  padding: 0.5em;
-  background: #3f3f3f;
-  color: #dcdcdc;
-  -webkit-text-size-adjust: none;
+    display: block;
+    overflow-x: auto;
+    padding: 0.5em;
+    background: #fdf6e3;
+    color: #657b83;
 }
 
-.hljs-keyword,
-.hljs-tag,
-.css .hljs-class,
-.css .hljs-id,
-.lisp .hljs-title,
-.nginx .hljs-title,
-.hljs-request,
-.hljs-status,
-.clojure .hljs-attribute {
-  color: #e3ceab;
-}
-
-.django .hljs-template_tag,
-.django .hljs-variable,
-.django .hljs-filter .hljs-argument {
-  color: #dcdcdc;
-}
-
-.hljs-number,
-.hljs-date {
-  color: #8cd0d3;
-}
-
-.dos .hljs-envvar,
-.dos .hljs-stream,
-.hljs-variable,
-.apache .hljs-sqbracket,
-.hljs-name {
-  color: #efdcbc;
-}
-
-.dos .hljs-flow,
-.diff .hljs-change,
-.python .exception,
-.python .hljs-built_in,
-.hljs-literal,
-.tex .hljs-special {
-  color: #efefaf;
-}
-
-.diff .hljs-chunk,
-.hljs-subst {
-  color: #8f8f8f;
-}
-
-.dos .hljs-keyword,
-.hljs-decorator,
-.hljs-title,
-.hljs-type,
-.diff .hljs-header,
-.ruby .hljs-class .hljs-parent,
-.apache .hljs-tag,
-.nginx .hljs-built_in,
-.tex .hljs-command,
-.hljs-prompt {
-  color: #efef8f;
-}
-
-.dos .hljs-winutils,
-.ruby .hljs-symbol,
-.ruby .hljs-symbol .hljs-string,
-.ruby .hljs-string {
-  color: #dca3a3;
-}
-
-.diff .hljs-deletion,
-.hljs-string,
-.hljs-tag .hljs-value,
-.hljs-preprocessor,
-.hljs-pragma,
-.hljs-built_in,
-.smalltalk .hljs-class,
-.smalltalk .hljs-localvars,
-.smalltalk .hljs-array,
-.css .hljs-rule .hljs-value,
-.hljs-attr_selector,
-.hljs-pseudo,
-.apache .hljs-cbracket,
-.tex .hljs-formula,
-.coffeescript .hljs-attribute {
-  color: #cc9393;
-}
-
-.hljs-shebang,
-.diff .hljs-addition,
 .hljs-comment,
-.hljs-annotation,
-.hljs-pi,
-.hljs-doctype {
-  color: #7f9f7f;
+.hljs-quote {
+    color: #93a1a1;
 }
 
-.coffeescript .javascript,
-.javascript .xml,
-.tex .hljs-formula,
-.xml .javascript,
-.xml .vbscript,
-.xml .css,
-.xml .hljs-cdata {
-  opacity: 0.5;
+/* Solarized Green */
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-addition {
+    color: #859900;
+}
+
+/* Solarized Cyan */
+.hljs-number,
+.hljs-string,
+.hljs-meta .hljs-meta-string,
+.hljs-literal,
+.hljs-doctag,
+.hljs-regexp {
+    color: #2aa198;
+}
+
+/* Solarized Blue */
+.hljs-title,
+.hljs-section,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.css .hljs-class,
+.css .hljs-function {
+    color: #268bd2;
+}
+
+
+/* Solarized Yellow */
+.hljs-attribute,
+.hljs-attr,
+.hljs-variable,
+.hljs-template-variable,
+.hljs-class .hljs-title,
+.hljs-type {
+    color: #b58900;
+}
+
+/* Solarized Orange */
+.hljs-symbol,
+.hljs-bullet,
+.hljs-subst,
+.hljs-meta,
+.hljs-meta .hljs-keyword,
+.hljs-selector-attr,
+.hljs-selector-pseudo,
+.hljs-link {
+    color: #cb4b16;
+}
+
+/* Solarized Red */
+.hljs-built_in,
+.hljs-deletion {
+    color: #dc322f;
+}
+
+.hljs-formula {
+    background: #eee8d5;
+}
+
+.hljs-emphasis {
+    font-style: italic;
+}
+
+.hljs-strong {
+    font-weight: bold;
 }
