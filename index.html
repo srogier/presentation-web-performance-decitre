@@ -81,7 +81,7 @@
 
                             éditons decitre.fr, librairie en ligne, basée sur magento. <br />
 
-                            gérons également des versions en MB de notre site, une version B2B, et proposons outil en mode SAAS de recherche bibliographique basé sur du symfony 2. <br />
+                            gérons également des versions en MB de notre site, et différents outils webs en symfony 2. <br />
 
                             Voilà pour contexte de l'équipe technique. <br />
 
@@ -99,7 +99,7 @@
 
                         <aside class="notes">
                             Decitre.fr existe depuis 1997.  <br />
-                            on actuelle basée sur magento mise en ligne en 2012.<br />
+                            version actuelle basée sur magento mise en ligne en 2012.<br />
 
                             Idée du trafic du site : 4,2 millions de pages vues par mois.<br />
                             Catalogue produit, 1.3 million de livres et ebooks.<br />
@@ -181,7 +181,7 @@
 
                             80 et 85% du temps consacré au reste ==> cad traitement de la page par le navigateur et le transfert réseau. <br />
 
-                            Avec répartitions, pour accélérer sa page, marge de manoeuvre pas serveur. <br />
+                            Avec telles répartitions, pour accélérer sa page, marge de manoeuvre pas serveur. <br />
 
                         </aside>
                     </section>
@@ -270,13 +270,9 @@
                         <aside class="notes">
                             sujet du moment PHP : PHP 7 et gains de perf promis avec nelle version. <br />
 
-                            Pour ceux que ça intéresse, Julien Pauli comparatif des performances de PHP 5 vs PHP 7 / PHPTour à Clermont Ferrand. <br />
-
-                            Pour ceux qui étaient ici aux lightning d'il y a mois, tenté de vous vendre la migration à PHP7. <br />
-                            Malheureusement, chez nous pas effectuée.<br/>
+                            Pour ceux que ça intéresse, Julien Pauli comparatif des performances de PHP 5 vs PHP 7 cet après-midi. <br />
 
                             Sommes en train de préparer des serveurs / jours/semaines avant migration soit faite. <br/>
-                            Sauf suprise  chiffres pour le PHPTour.<br/>
 
                             Sur preprod, constat tps traitement php + rapide de l'ordre de 20 à 40%. <br/>
                             Les chiffres valent ce qu'ils valent : env avec peu de trafic, donc attention.<br/>
@@ -331,11 +327,11 @@
 
                             Délai nécessaire pour que les paquets fasse A/R entre le navigateur et le serveur. <br />
 
-                            Temps qui va principalement dépendre de la distance physique entre le navigateur et le serveur influe également. <br />
+                            Temps qui va principalement dépendre de la distance physique entre le navigateur et le serveur <br />
 
                             + on est loin, plus la latence va être importante. <br/>
 
-                            + réseau utilisé (mobile, connexion 3G entre 100 et 500ms, fixe  général inférieure à 20 ms)<br />
+                            + réseau utilisé => plus élevée en mobile que sur une connexion fixe<br />
 
                             tester très facilement impact latence dans outils de développement de votre navigateur. Réglage seuils de bande passante et de latence pour en visualiser l'impact. <br />
 
@@ -374,7 +370,7 @@
                             2. Requete DNS. indentification du serveur si on connu<br />
                             3. Etablissement de la connexion. Retombe sur les parties basses du modèle OSI de tout à l'heure<br />
                             3.bis au besoin négo TLS, cf ligne SSL<br />
-                            4. connexion établie : envoi de la requete
+                            4. connexion établie : envoi de la requete<br />
                             5. le serveur (traite, prépare contenu). attente du premier paquet reçu par le nav : TTFB<br />
                             5. Téléchargement <br />
 
@@ -448,7 +444,7 @@
                             Et ce sur tous les types de boutons que notre site pouvait utiliser. Je vous laisse imaginer tous les problèmes de maintenance liés. <br />
 
                             Refonte avec de la CSS 3 : gradient et border-radius. <br />
-                            suppression désagréable effet de clignotement visible au premier chargement et surtout plus d'images à télécharger <br />
+                            ⇒ plus d’images à télécharger
                         </aside>
                     </section>
 
@@ -523,7 +519,7 @@
 
 
                         <aside class="notes">
-                            Enfin, nous avions des petites images que nous utilisions fréquement, <br />
+                            Enfin, nous avions des petites images que nous utilisions fréquemment, <br />
                             plutôt que faire un hit HTTP, nous les avons directement intégré dans la CSS ou le code HTML.   <br />
 
                             Comment vous pouvez le voir, au lieu de mettre l'URL de l'image, nous avons mis sa data-URI.   <br />
@@ -611,13 +607,13 @@
                         </ul>
 
                         <aside class="notes">
-                            Chaque fois que le navigateur récupèrait un fichier ==> établissait une connexion. <br />
+                            Chaque fois que le navigateur récupérait un fichier ==> établissait une connexion. <br />
 
                             Côté serveur, peut spécifier directive qui s'appele Keep-Alive ==> permettre de garder ouverte connexion pendant un temps donné. <br />
 
                             Navigateur pourra réutiliser connexion déjà ouverte au lieu d'en ouvrir une autre <br />
 
-                            Economoie A/R réseaux d'intialisation de connexion. <br />
+                            Économie A/R réseaux d'initialisation de connexion. <br />
 
                             Paramètre qui se règle sur votre serveur web et sur lequel vous réglez la durée d'ouverture de la connexion. <br />
 
@@ -687,8 +683,7 @@
 
                             Pour résoudre problématique mis en place mécanisme sur visuels : le lazy loading. <br />
 
-                            Technique qui consiste à décaler chargement d’une ressource au moment où on en a vraiment besoin. <br />
-                            Pour visuels, revient à ne charger les images qu’à partir du moment où elles sont dans le viewport, CAD dans zone visible par l'utilisateur. <br />
+                            On ne charge les images qu’à partir du moment où elles sont dans le viewport, CAD dans zone visible par l'utilisateur. <br />
 
                             temps de chargement initial de la page réduit et images ne sont chargées que si elles sont affichées par l’utilisateur.
 
@@ -746,7 +741,7 @@
 
 
                         <aside class="notes">
-                            Allégèment des fichiers retournés par le serveur. Activation compression gzip.<br />
+                            Allègement des fichiers retournés par le serveur. Activation compression gzip.<br />
                             Non seulement, ressources moins lourdes à charger<br />
                             Quota de bande passante : des données moins lourdes qui transitent. <br />
                             Pertinent pour les fichiers de type texte. Image déjà optimisée <br />
@@ -767,7 +762,7 @@
                             Après la concat des CSS et JS, bonne pratique suivante : minification <br />
                             Suppression des caractères inutiles (espaces, tab), commentaires, simplification des noms de variables pour le JS.  <br />
                             Permet d'avoir des versions allégées en prod <br />
-                            Pas mis en place chez nous. Cout de mise de place de la couche supplémentaire pas assez rentable par rapport aux autres modifications possibles pour le même temps. <br />
+                            Pas mis en place chez nous. Coût de mise de place de la couche supplémentaire pas assez rentable par rapport aux autres modifications possibles pour le même temps. <br />
                             // TODO chiffrer gain potentiel
                         </aside>
                     </section>
@@ -787,7 +782,7 @@
                             Chaque hit sur le domaine du cookie ==> envoi du cokie. ==> coût car il faut uploader le cookie. <br />
                             Dans le cas de fichiers statiques comme les images ou les feuilles de style, quel intérêt a-t-on à transmettre les cookies utilisateurs ? Aucun. <br />
                             Autre domaine di-static pour servir ces ressources. Cookies liées à decitre.fr donc non envoyé. <br />
-                            Requete allégée (300 octets à qq 2Ko en fonction de l'utilisation du site et des cookies présents) <br />
+                            Requête allégée (300 octets à qq 2Ko en fonction de l'utilisation du site et des cookies présents) <br />
 
                         </aside>
                     </section>
@@ -996,12 +991,9 @@
                         <p>Travailler sur le chemin critique du rendu navigateur</p>
 
                         <aside class="notes">
-                            En piste d'amélération, nous pourrions également nous pencher sur les optimisations côté navigateur pour que la page s'affiche au plus tôt les contenus nécessaires à l'utilisateur. <br />
+                            En piste d'amélération, nous pourrions également nous pencher sur les optimisations côté navigateur pour que la page affiche au plus tôt les contenus nécessaires. <br />
 
-                            Notamment, en optimisant le chemin critique du rendu navigateur, nous pourrions arriver à ça. <br/>
-
-                            Dejà en nettoyant et continuant de simplifier le code HTML et CSS, puis en travaillant par exemple sur l'extraction de la partie critique de la CSS et en l'injectant dans le code HTML<br />
-
+                            Nettoyage du code HTML et CSS et travail sur le le chemin critique du rendu navigateur. <br />
 
                             Mais c’est un autre pan de l’optimisation de la performance sur lequel nous n’avons pas travaillé et que je ne développerai pas. <br/>
                         </aside>
