@@ -80,9 +80,14 @@ section.has-dark-background {
 
 section[data-background] {
   > h1,
-  > h2 {
-    background-color: rgba(255, 255, 255, 0.7);
+  > h2,
+  .block-title {
+    background-color: rgba(255, 255, 255, 0.85);
     padding: 1.5em;
     color: $baseColorDarker;
+  }
+
+  .block-title--main {
+    padding: 1em 0.1em;
   }
 }
