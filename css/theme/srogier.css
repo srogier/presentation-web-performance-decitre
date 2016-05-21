@@ -303,3 +303,13 @@ body {
 
 .reveal .source {
   font-size: 0.5em; }
+
+section[data-background] > h1,
+section[data-background] > h2,
+section[data-background] .block-title {
+  background-color: rgba(255, 255, 255, 0.85);
+  padding: 1.5em;
+  color: #005A7F; }
+
+section[data-background] .block-title--main {
+  padding: 1em 0.1em; }

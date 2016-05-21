@@ -39,35 +39,36 @@
         <div class="reveal">
 
             <div class="slides">
-                <section>
-                    <h1>De 7 à 3s : retour d’expérience sur la performance Web sur decitre.fr</h1>
-                    <h3>PHP Tour 2016 - Clermont Ferrand - 24 mai 2016</h3>
-                    <a href="https://twitter.com/srogier"><i class="fa fa-twitter"></i>@srogier</a> /
-                    <a href="https://github.com/srogier"><i class="fa fa-github"></i> srogier</a>
-
+                <section  data-background="images/background/decitre.jpg">
+                    <div class="block-title block-title--main">
+                        <h1>De 7 à 3s : retour d’expérience sur la performance Web sur decitre.fr</h1>
+                        <h3>PHP Tour 2016 - Clermont Ferrand - 24 mai 2016</h3>
+                        <a href="https://twitter.com/srogier"><i class="fa fa-twitter"></i>@srogier</a> /
+                        <a href="https://github.com/srogier"><i class="fa fa-github"></i> srogier</a>
+                    </div>
                 </section>
 
                 <section>
-                    <h2>La performance Web sur decitre.fr</h2>
-                    <aside class="notes">
-                        Présenter travail effectué PW sur notre site. <br />
+                    <section data-background="images/background/decitre.jpg">
+                        <h2>La performance Web sur decitre.fr</h2>
+                        <aside class="notes">
+                            Présenter travail effectué PW sur notre site. <br />
 
-                        deux dernières années sur decitre.fr, chasse à la seconde côté front (réduisant et allégeant ressources exposées) et côté back afin d’en améliorer l’expérience utilisateur. <br />
+                            deux dernières années sur decitre.fr, chasse à la seconde côté front (réduisant et allégeant ressources exposées) et côté back afin d’en améliorer l’expérience utilisateur. <br />
 
-                        parlerai de pourquoi la PW est importante, quelles optimisations ont été faites et les résultats constatés. <br />
+                            parlerai de pourquoi la PW est importante, quelles optimisations ont été faites et les résultats constatés. <br />
 
-                        sommes à un évènement de l’AFUP, la plupart d’entre vous sont des développeurs PHP. habitude du backend, suivre les performances côte serveur.<br />
+                            sommes à un évènement de l’AFUP, la plupart d’entre vous sont des développeurs PHP. habitude du backend, suivre les performances côte serveur.<br />
 
-                        Mais je voulais parler de tout l’aspect performance hors serveur qui pouvait être parfois méconnu de beaucoup d’entre nous. <br />
+                            Mais je voulais parler de tout l’aspect performance hors serveur qui pouvait être parfois méconnu de beaucoup d’entre nous. <br />
 
-                        Je ne vous parlerai donc très peu d’optimisations serveur, mais je présenterai tout ce qu’on a pu faire pour accélérer l’affichage de nos pages sur decitre.fr <br />
+                            Je ne vous parlerai donc très peu d’optimisations serveur, mais je présenterai tout ce qu’on a pu faire pour accélérer l’affichage de nos pages sur decitre.fr <br />
 
-                    </aside>
-                </section>
-
-                <section>
-                    <h1>Decitre.fr</h1>
+                        </aside>
+                    </section>
                     <section>
+                        <h1>Decitre.fr</h1>
+
                         <h2>L'équipe</h2>
 
                         <ul>
@@ -81,7 +82,7 @@
 
                             éditons decitre.fr, librairie en ligne, basée sur magento. <br />
 
-                            gérons également des versions en MB de notre site, une version B2B, et proposons outil en mode SAAS de recherche bibliographique basé sur du symfony 2. <br />
+                            gérons également des versions en MB de notre site, et différents outils webs en symfony 2. <br />
 
                             Voilà pour contexte de l'équipe technique. <br />
 
@@ -90,6 +91,8 @@
                     </section>
 
                     <section>
+                        <h1>Decitre.fr</h1>
+
                         <h2>Le site</h2>
 
                         <ul>
@@ -99,7 +102,7 @@
 
                         <aside class="notes">
                             Decitre.fr existe depuis 1997.  <br />
-                            on actuelle basée sur magento mise en ligne en 2012.<br />
+                            version actuelle basée sur magento mise en ligne en 2012.<br />
 
                             Idée du trafic du site : 4,2 millions de pages vues par mois.<br />
                             Catalogue produit, 1.3 million de livres et ebooks.<br />
@@ -112,6 +115,15 @@
 
 
                 <section>
+
+                    <section data-background="images/background/performance.jpg">
+                        <h1>Qu'est-ce que la performance web ?</h1>
+
+                        <aside class="notes">
+                            <span class="time">02:00</span>
+                            Commencer par définir ce qu'est la WP.
+                        </aside>
+                    </section>
 
                     <section>
                         <h1>Qu'est-ce que la performance web ?</h1>
@@ -172,7 +184,7 @@
 
                             80 et 85% du temps consacré au reste ==> cad traitement de la page par le navigateur et le transfert réseau. <br />
 
-                            Avec répartitions, pour accélérer sa page, marge de manoeuvre pas serveur. <br />
+                            Avec telles répartitions, pour accélérer sa page, marge de manoeuvre pas serveur. <br />
 
                         </aside>
                     </section>
@@ -203,7 +215,7 @@
 
 
                 <section>
-                    <section>
+                    <section data-background="images/background/infra.jpg">
                         <h1>Optimiser l'infra</h1>
 
                         <aside class="notes">
@@ -255,28 +267,34 @@
                         <h2>Migrer vers PHP 7</h2>
 
                         <ul>
-                            <li>Pas encore fait en prod</li>
-                            <li>Amélioration du temps de traitement entre 20% et 40% </li>
+                            <li>En cours de déploiement</li>
+                            <li>Amélioration du temps de traitement entre 35% et 40% </li>
                         </ul>
                         <aside class="notes">
                             sujet du moment PHP : PHP 7 et gains de perf promis avec nelle version. <br />
 
-                            Pour ceux que ça intéresse, Julien Pauli comparatif des performances de PHP 5 vs PHP 7 / PHPTour à Clermont Ferrand. <br />
+                            Pour ceux que ça intéresse, Julien Pauli comparatif des performances de PHP 5 vs PHP 7 cet après-midi. <br />
 
-                            Pour ceux qui étaient ici aux lightning d'il y a mois, tenté de vous vendre la migration à PHP7. <br />
-                            Malheureusement, chez nous pas effectuée.<br/>
+                            Il y a trois mois, appel à conférencier, pensais être large pour migration avant PHPtour. <br />
 
-                            Sommes en train de préparer des serveurs / jours/semaines avant migration soit faite. <br/>
-                            Sauf suprise  chiffres pour le PHPTour.<br/>
+                            En vrai, commencé à envoyer du contenu sur nos serveurs prod vendredi <br />
 
-                            Sur preprod, constat tps traitement php + rapide de l'ordre de 20 à 40%. <br/>
-                            Les chiffres valent ce qu'ils valent : env avec peu de trafic, donc attention.<br/>
-                            Mais globalement on est dans les valeurs attendues. Donc attendons la mise en prod.  <br />
+                            Optimisation tps traitement entre -35% et -40% selon premières observations. <br />
                         </aside>
                     </section>
                 </section>
 
                 <section>
+
+                    <section data-background="images/background/cables.jpg">
+                        <h1>L'importance du réseau</h1>
+
+                        <aside class="notes">
+                            <span class="time">08:00</span>
+                            Pour que navigateur et serveur communiquent , passage réseau (partie basse vue dans modèle OSI de tout à l’heureà. <br />
+                        </aside>
+                    </section>
+
                     <section>
                         <h1>L'importance du réseau</h1>
 
@@ -288,8 +306,6 @@
 
                         <aside class="notes">
                             <span class="time">08:00</span>
-                            Pour que navigateur et serveur communiquent , passage réseau (partie basse vue dans modèle OSI de tout à l’heureà. <br />
-
                             Souvent quand on pense réseau, on va penser bande passante. <br />
 
                             Bande passante : capacité à transmettre des données pendant un temps. <br />
@@ -314,11 +330,11 @@
 
                             Délai nécessaire pour que les paquets fasse A/R entre le navigateur et le serveur. <br />
 
-                            Temps qui va principalement dépendre de la distance physique entre le navigateur et le serveur influe également. <br />
+                            Temps qui va principalement dépendre de la distance physique entre le navigateur et le serveur <br />
 
                             + on est loin, plus la latence va être importante. <br/>
 
-                            + réseau utilisé (mobile, connexion 3G entre 100 et 500ms, fixe  général inférieure à 20 ms)<br />
+                            + réseau utilisé => plus élevée en mobile que sur une connexion fixe<br />
 
                             tester très facilement impact latence dans outils de développement de votre navigateur. Réglage seuils de bande passante et de latence pour en visualiser l'impact. <br />
 
@@ -357,9 +373,9 @@
                             2. Requete DNS. indentification du serveur si on connu<br />
                             3. Etablissement de la connexion. Retombe sur les parties basses du modèle OSI de tout à l'heure<br />
                             3.bis au besoin négo TLS, cf ligne SSL<br />
-                            4. connexion établie : envoi de la requete
+                            4. connexion établie : envoi de la requete<br />
                             5. le serveur (traite, prépare contenu). attente du premier paquet reçu par le nav : TTFB<br />
-                            5. Téléchargement <br />
+                            6. Téléchargement <br />
 
 
                         </aside>
@@ -383,7 +399,7 @@
                 </section>
 
                 <section>
-                    <section>
+                    <section data-background="images/background/lettres.jpg">
                         <h1>Faire moins de requêtes</h1>
 
                         <aside class="notes">
@@ -431,7 +447,7 @@
                             Et ce sur tous les types de boutons que notre site pouvait utiliser. Je vous laisse imaginer tous les problèmes de maintenance liés. <br />
 
                             Refonte avec de la CSS 3 : gradient et border-radius. <br />
-                            suppression désagréable effet de clignotement visible au premier chargement et surtout plus d'images à télécharger <br />
+                            ⇒ plus d’images à télécharger
                         </aside>
                     </section>
 
@@ -506,7 +522,7 @@
 
 
                         <aside class="notes">
-                            Enfin, nous avions des petites images que nous utilisions fréquement, <br />
+                            Enfin, nous avions des petites images que nous utilisions fréquemment, <br />
                             plutôt que faire un hit HTTP, nous les avons directement intégré dans la CSS ou le code HTML.   <br />
 
                             Comment vous pouvez le voir, au lieu de mettre l'URL de l'image, nous avons mis sa data-URI.   <br />
@@ -551,7 +567,6 @@
                         <aside class="notes">
 
                             Pour finir effet sur nombre de ressources <br />
-                            Non seulement, nettoyage permis moindre coût footer moderne, <br />
                             économie d'un certain nombre d'appel serveurs (graphe jaune)<br />
                             effet sur temps de chargement 0.1/0.2s ==> peu<br />
 
@@ -594,13 +609,13 @@
                         </ul>
 
                         <aside class="notes">
-                            Chaque fois que le navigateur récupèrait un fichier ==> établissait une connexion. <br />
+                            Chaque fois que le navigateur récupérait un fichier ==> établissait une connexion. <br />
 
                             Côté serveur, peut spécifier directive qui s'appele Keep-Alive ==> permettre de garder ouverte connexion pendant un temps donné. <br />
 
                             Navigateur pourra réutiliser connexion déjà ouverte au lieu d'en ouvrir une autre <br />
 
-                            Economoie A/R réseaux d'intialisation de connexion. <br />
+                            Économie A/R réseaux d'initialisation de connexion. <br />
 
                             Paramètre qui se règle sur votre serveur web et sur lequel vous réglez la durée d'ouverture de la connexion. <br />
 
@@ -637,6 +652,10 @@
                     <section>
                         <h2>Concaténer les assets</h2>
 
+                        <ul>
+                            <li>Regrouper les fichiers JS et les fichiers CSS</li>
+                        </ul>
+
                         <aside class="notes">
                             Bcp de fichier js et CSS <br />
                             chez nous, 10 css et 70 js  <br />
@@ -670,8 +689,7 @@
 
                             Pour résoudre problématique mis en place mécanisme sur visuels : le lazy loading. <br />
 
-                            Technique qui consiste à décaler chargement d’une ressource au moment où on en a vraiment besoin. <br />
-                            Pour visuels, revient à ne charger les images qu’à partir du moment où elles sont dans le viewport, CAD dans zone visible par l'utilisateur. <br />
+                            On ne charge les images qu’à partir du moment où elles sont dans le viewport, CAD dans zone visible par l'utilisateur. <br />
 
                             temps de chargement initial de la page réduit et images ne sont chargées que si elles sont affichées par l’utilisateur.
 
@@ -706,7 +724,7 @@
                 </section>
 
                 <section>
-                    <section>
+                    <section data-background="images/background/balance.jpg">
                         <h1>Alléger les ressources</h1>
 
                         <aside class="notes">
@@ -729,7 +747,7 @@
 
 
                         <aside class="notes">
-                            Allégèment des fichiers retournés par le serveur. Activation compression gzip.<br />
+                            Allègement des fichiers retournés par le serveur. Activation compression gzip.<br />
                             Non seulement, ressources moins lourdes à charger<br />
                             Quota de bande passante : des données moins lourdes qui transitent. <br />
                             Pertinent pour les fichiers de type texte. Image déjà optimisée <br />
@@ -750,8 +768,8 @@
                             Après la concat des CSS et JS, bonne pratique suivante : minification <br />
                             Suppression des caractères inutiles (espaces, tab), commentaires, simplification des noms de variables pour le JS.  <br />
                             Permet d'avoir des versions allégées en prod <br />
-                            Pas mis en place chez nous. Cout de mise de place de la couche supplémentaire pas assez rentable par rapport aux autres modifications possibles pour le même temps. <br />
-                            // TODO chiffrer gain potentiel
+                            Pas mis en place chez nous. Coût de mise de place de la couche supplémentaire pas assez rentable par rapport aux autres modifications possibles pour le même temps. <br />
+                            environ 5% de la taille des fichiers
                         </aside>
                     </section>
 
@@ -770,7 +788,7 @@
                             Chaque hit sur le domaine du cookie ==> envoi du cokie. ==> coût car il faut uploader le cookie. <br />
                             Dans le cas de fichiers statiques comme les images ou les feuilles de style, quel intérêt a-t-on à transmettre les cookies utilisateurs ? Aucun. <br />
                             Autre domaine di-static pour servir ces ressources. Cookies liées à decitre.fr donc non envoyé. <br />
-                            Requete allégée (300 octets à qq 2Ko en fonction de l'utilisation du site et des cookies présents) <br />
+                            Requête allégée (300 octets à qq 2Ko en fonction de l'utilisation du site et des cookies présents) <br />
 
                         </aside>
                     </section>
@@ -818,17 +836,11 @@
 
                         <aside class="notes">
 
-                            Jusqu'à partie historique css dans gros fichier de 5000 lignes. <br />
-
-                            Difficile de voir dans la css ce qui était vraiment utilisé et dans quelle partie de partie l'application. <br />
-
                             Au fil des évos du site, code non utilisé, chargé et alourdi les données téléchargées. <br />
 
-                             15% de css qui porte sur du code mort qu'on a nettoyé <br />
+                            15% de css qui porte sur du code mort qu'on a nettoyé <br />
 
                             profité d'une migration de la css existante vers sass pour ne porter que le code qui était réellement utilisé sur le site. <br />
-
-                            fichiers séparés par type d'affichage ==> devrait à l'avenir limiter ce risque de cumul de code mort. <br />
 
                             Sur le long terme, avoir un outil automatisé de détection du code css mort comme uncss et une intégration continue sur ce point parait indispensable.
                         </aside>
@@ -837,7 +849,7 @@
                 </section>
 
                 <section>
-                    <section>
+                    <section data-background="images/background/barbele.jpg">
                         <h1>Réduire les contenus bloquants</h1>
 
                         <aside class="notes">
@@ -933,11 +945,11 @@
                             <li>Attention aux coûts du sharding</li>
                         </ul>
                         <aside class="notes">
-                            Homepage (création édito, visuels produits, images dans la CSS) + 50 images utilisées sur la page. <br/>
-                            FP quarantaine. Les images sont le type de ressource le + appelé <br/>
-                            HTTP 1, navigateur peut paralléliser les appels, mais limite de 4 à 8 connexions/domaine. Comment détourner limite et améliorer le tmps de chargement ?  <br />
+                            On a vu bcp images à charger par le navigateur ==> point de blocage <br/>
+                            HTTP 1, navigateur peut paralléliser les appels, mais limite de onnexions/domaine. <br />
+                            Comment détourner limite et améliorer le tmps de chargement ?  <br />
                             Technique pour augmenter la capacité à paralléliser en chargeant sur de nouveaux domaines : domain-sharding <br />
-                            www.decitre.fr/mon-image.jpg ==> media.decitre.fr/mon-image.jpg (image : media, reste www)
+                            www.decitre.fr/mon-image.jpg ==> media.decitre.fr/mon-image.jpg (image : media, reste www) <br />
 
                             Attention : nouveau domaine == 1 résolution DNS à faire + nouvelle connexion potentiellement très coûteuse. <br />
                             Peut ne pas être rentable. Bien évaluer le nombre de domaine sur lequel on compte effectuer la répartition. <br />
@@ -948,7 +960,7 @@
                 </section>
 
                 <section>
-                    <section>
+                    <section data-background="images/background/post-it.jpg">
                         <h1>Et ensuite ?</h1>
                         <aside class="notes">
                             <span class="time">35:00</span>
@@ -959,6 +971,12 @@
 
                     <section>
                         <h2>HTTP/2</h2>
+
+                        <ul>
+                            <li>Multiplexage des requêtes</li>
+                            <li>Compression des headers</li>
+                            <li>Content pushing</li>
+                        </ul>
                         <aside class="notes">
                             Gros chantiers vers lequel on va se pencher dans les prochains mois sera de basculer vers HTTP/2. <br />
 
@@ -979,12 +997,9 @@
                         <p>Travailler sur le chemin critique du rendu navigateur</p>
 
                         <aside class="notes">
-                            En piste d'amélération, nous pourrions également nous pencher sur les optimisations côté navigateur pour que la page s'affiche au plus tôt les contenus nécessaires à l'utilisateur. <br />
+                            En piste d'amélération, nous pourrions également nous pencher sur les optimisations côté navigateur pour que la page affiche au plus tôt les contenus nécessaires. <br />
 
-                            Notamment, en optimisant le chemin critique du rendu navigateur, nous pourrions arriver à ça. <br/>
-
-                            Dejà en nettoyant et continuant de simplifier le code HTML et CSS, puis en travaillant par exemple sur l'extraction de la partie critique de la CSS et en l'injectant dans le code HTML<br />
-
+                            Nettoyage du code HTML et CSS et travail sur le le chemin critique du rendu navigateur. <br />
 
                             Mais c’est un autre pan de l’optimisation de la performance sur lequel nous n’avons pas travaillé et que je ne développerai pas. <br/>
                         </aside>
@@ -1010,64 +1025,68 @@
                             </ul>
                         </div>
                     </section>
+
+                    <section>
+                        <h2>Impliquez vos équipes</h2>
+
+                        <ul>
+                            <li>Intégrez la web performance dans votre culture d'équipe</li>
+                            <li>Créez vos process</li>
+                            <li>Mesurez</li>
+                            <li>Vendez votre travail</li>
+                        </ul>
+
+
+                        <aside class="notes">
+                            revue de code, testing ou plein bonnes pratiques, PW culture équipe. <br />
+
+                            Mettez process pour impacts des modifications, ex webpagetest après un développement. <br />
+
+                            On ne peut améliorer ce qu’on ne mesure pas <br />
+                            Ajoutez dans intégration continue mesures régulières pour suivre l'évolution. <br />
+
+                            Enfin, certes en tant qu'équipe de développement ==> impact fort sur le site. <br />
+                            Mais nous ne sommes pas les seuls à influer sur le contenu du site. <br />
+                            chez nous des équipes éditos interviennent tous les jours<br />
+
+                            Donc expliquez à vos collègues et vendez-leur votre culture de la PW pour qu'ils se l'approprient. <br />
+                            Exposez vos métriques et accompagnez-les dans l'application de vos process, <br />
+                            de manière à ce que tt ceux qui travaillent sur vos sites aient conscience de ces enjeux.
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h2>Tout ça pour quels résultats ?</h2>
+
+                        <img src="images/graph_final_petit.png">
+
+                        <aside class="notes">
+                            Durant les deux dernières années, on a de manière itérative, effectué toutes ces modifications, dans l'objectif de charger le minimum, au plus vite en décalant le superflu à plus tard. <br />
+
+                            Plein d’optimisation, mais contrairement aux exemples célèbres cités en intro, il n'y pas eu d’effet sur le business ou sur le SEO. <br />
+
+                            A voir sur le plus long terme, car beaucoup de grosses modifications ont été faites au cours de la dernière année. <br />
+
+                            Mais même si d'un point de vue business ==> les effets mitigées,
+                            d'un point de vue perception utilisateur, bénéfique avoir site pages qui répondent + vite. <br />
+
+                            Pour moi l'objectif de ce sujet c'était de vous présenter ces aspects. <br />
+
+                            De montrer que même dans une petite équipe on peut travailler sur ces éléments qui pour la plupart sont assez faciles à mettre en oeuvre. <br />
+
+                            Et aussi de vous rappeler qu'il n'y a pas le back dans la vie mais également plein de travail super intéressant à faire de l'autre côté du serveur.
+                        </aside>
+                    </section>
                 </section>
 
-                <section>
-                    <h2>Impliquez vos équipes</h2>
+                <section data-background="images/background/questions.jpg">
 
-                    <ul>
-                        <li>Intégrez la web performance dans votre culture d'équipe</li>
-                        <li>Créez vos process</li>
-                        <li>Mesurez</li>
-                        <li>Vendez votre travail</li>
-                    </ul>
+                    <div class="block-title">
+                        <h1>Merci pour votre attention</h1>
 
+                        <h3>Des questions ?</h3>
+                    </div>
 
-                    <aside class="notes">
-                        revue de code, testing ou plein bonnes pratiques, PW culture équipe. <br />
-
-                        Mettez process pour impacts des modifications, ex webpagetest après un développement. <br />
-
-                        On ne peut améliorer ce qu’on ne mesure pas <br />
-                        Ajoutez dans intégration continue mesures régulières pour suivre l'évolution. <br />
-
-                        Enfin, certes en tant qu'équipe de développement ==> impact fort sur le site. <br />
-                        Mais nous ne sommes pas les seuls à influer sur le contenu du site. <br />
-                        chez nous des équipes éditos interviennent tous les jours<br />
-
-                        Donc expliquez à vos collègues et vendez-leur votre culture de la PW pour qu'ils se l'approprient. <br />
-                        Exposez vos métriques et accompagnez-les dans l'application de vos process, <br />
-                        de manière à ce que tt ceux qui travaillent sur vos sites aient conscience de ces enjeux.
-                    </aside>
-                </section>
-
-                <section>
-                    <h2>Tout ça pour quels résultats</h2>
-
-                    <img src="images/graph_final_petit.png">
-
-                    <aside class="notes">
-                        Durant les deux dernières années, on a de manière itérative, effectué toutes ces modifications, dans l'objectif de charger le minimum, au plus vite en décalant le superflu à plus tard. <br />
-
-                        Plein d’optimisation, mais contrairement aux exemples célèbres cités en intro, il n'y pas eu d’effet sur le business ou sur le SEO. <br />
-
-                        A voir sur le plus long terme, car beaucoup de grosses modifications ont été faites au cours de la dernière année. <br />
-
-                        Mais même si d'un point de vue business ==> les effets mitigées,
-                        d'un point de vue perception utilisateur, bénéfique avoir site pages qui répondent + vite. <br />
-
-                        Pour moi l'objectif de ce sujet c'était de vous présenter ces aspects. <br />
-
-                        De montrer que même dans une petite équipe on peut travailler sur ces éléments qui pour la plupart sont assez faciles à mettre en oeuvre. <br />
-
-                        Et aussi de vous rappeler qu'il n'y a pas le back dans la vie mais également plein de travail super intéressant à faire de l'autre côté du serveur.
-                    </aside>
-                </section>
-
-                <section>
-                    <h1>Merci pour votre attention</h1>
-
-                    <h3>Des questions ?</h3>
                 </section>
 
             </div>
