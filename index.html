@@ -375,7 +375,7 @@
                             3.bis au besoin négo TLS, cf ligne SSL<br />
                             4. connexion établie : envoi de la requete<br />
                             5. le serveur (traite, prépare contenu). attente du premier paquet reçu par le nav : TTFB<br />
-                            5. Téléchargement <br />
+                            6. Téléchargement <br />
 
 
                         </aside>
@@ -567,7 +567,6 @@
                         <aside class="notes">
 
                             Pour finir effet sur nombre de ressources <br />
-                            Non seulement, nettoyage permis moindre coût footer moderne, <br />
                             économie d'un certain nombre d'appel serveurs (graphe jaune)<br />
                             effet sur temps de chargement 0.1/0.2s ==> peu<br />
 
@@ -770,7 +769,7 @@
                             Suppression des caractères inutiles (espaces, tab), commentaires, simplification des noms de variables pour le JS.  <br />
                             Permet d'avoir des versions allégées en prod <br />
                             Pas mis en place chez nous. Coût de mise de place de la couche supplémentaire pas assez rentable par rapport aux autres modifications possibles pour le même temps. <br />
-                            // TODO chiffrer gain potentiel
+                            environ 5% de la taille des fichiers
                         </aside>
                     </section>
 
@@ -837,17 +836,11 @@
 
                         <aside class="notes">
 
-                            Jusqu'à partie historique css dans gros fichier de 5000 lignes. <br />
-
-                            Difficile de voir dans la css ce qui était vraiment utilisé et dans quelle partie de partie l'application. <br />
-
                             Au fil des évos du site, code non utilisé, chargé et alourdi les données téléchargées. <br />
 
-                             15% de css qui porte sur du code mort qu'on a nettoyé <br />
+                            15% de css qui porte sur du code mort qu'on a nettoyé <br />
 
                             profité d'une migration de la css existante vers sass pour ne porter que le code qui était réellement utilisé sur le site. <br />
-
-                            fichiers séparés par type d'affichage ==> devrait à l'avenir limiter ce risque de cumul de code mort. <br />
 
                             Sur le long terme, avoir un outil automatisé de détection du code css mort comme uncss et une intégration continue sur ce point parait indispensable.
                         </aside>
@@ -952,11 +945,11 @@
                             <li>Attention aux coûts du sharding</li>
                         </ul>
                         <aside class="notes">
-                            Homepage (création édito, visuels produits, images dans la CSS) + 50 images utilisées sur la page. <br/>
-                            FP quarantaine. Les images sont le type de ressource le + appelé <br/>
-                            HTTP 1, navigateur peut paralléliser les appels, mais limite de 4 à 8 connexions/domaine. Comment détourner limite et améliorer le tmps de chargement ?  <br />
+                            On a vu bcp images à charger par le navigateur ==> point de blocage <br/>
+                            HTTP 1, navigateur peut paralléliser les appels, mais limite de onnexions/domaine. <br />
+                            Comment détourner limite et améliorer le tmps de chargement ?  <br />
                             Technique pour augmenter la capacité à paralléliser en chargeant sur de nouveaux domaines : domain-sharding <br />
-                            www.decitre.fr/mon-image.jpg ==> media.decitre.fr/mon-image.jpg (image : media, reste www)
+                            www.decitre.fr/mon-image.jpg ==> media.decitre.fr/mon-image.jpg (image : media, reste www) <br />
 
                             Attention : nouveau domaine == 1 résolution DNS à faire + nouvelle connexion potentiellement très coûteuse. <br />
                             Peut ne pas être rentable. Bien évaluer le nombre de domaine sur lequel on compte effectuer la répartition. <br />
